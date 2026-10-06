@@ -1,0 +1,98 @@
+/* tfg-cor-2027: own identity on the family kit (theme.css + site.css, copied from the
+   FTIR ecosystem site). Loaded last, so only the tokens and this site's components change.
+   Palette: fronton red primary (the pelota court), wall green accent, warm paper —
+   told apart at a glance from the teal/amber ecosystem and the teal/terracotta twin. */
+:root {
+  --paper: #fcfbf8;
+  --tint: #f5f2ed;
+  --line: #ddd6cc;
+  --line-soft: #ece6dd;
+  --teal: #8c2f39;          /* primary: fronton red */
+  --teal-soft: #a8434e;
+  --amber: #2f6b55;         /* accent: fronton wall green */
+  --ok: #2f6b55; --warn: #9a6512; --bad: #8c2f39;
+  --sev-crit: #a3222f; --sev-high: #a65a10; --sev-med: #8c2f39; --sev-good: #2f6b55;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17191b;
+    --tint: #1f2124;
+    --line: #36393e;
+    --line-soft: #2a2d31;
+    --teal: #e6929a;
+    --teal-soft: #f0aab0;
+    --amber: #8ccbb1;
+    --ok: #8ccbb1; --warn: #e0b065; --bad: #e6929a;
+    --sev-crit: #f08a93; --sev-high: #e8a660; --sev-med: #e6929a; --sev-good: #8ccbb1;
+  }
+}
+.topline { background: var(--teal); }
+
+/* ---------- severity chips (audit) */
+.sev { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 1px 8px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink-faint);
+  vertical-align: 0.1em; white-space: nowrap; }
+.sev-critical { color: var(--sev-crit); border-color: var(--sev-crit); }
+.sev-high     { color: var(--sev-high); border-color: var(--sev-high); }
+.sev-medium   { color: var(--sev-med);  border-color: var(--line); }
+.sev-low      { color: var(--ink-faint); }
+.sev-good     { color: var(--sev-good); border-color: var(--sev-good); }
+
+/* ---------- finding cards (audit) */
+.finding { border: 1px solid var(--line); border-left: 4px solid var(--teal); background: var(--paper);
+  padding: 16px 22px 6px; margin: 22px 0 26px; }
+.finding h4 { margin: 0 0 10px !important; font-family: var(--serif) !important; font-size: 17px !important;
+  font-weight: 600; letter-spacing: 0 !important; text-transform: none !important; color: var(--ink) !important; line-height: 1.4; }
+.finding p, .finding li { font-size: 15.5px; max-width: none; }
+.finding table { width: 100%; }
+.finding.crit { border-left-color: var(--sev-crit); }
+.finding.high { border-left-color: var(--sev-high); }
+.finding.good { border-left-color: var(--sev-good); }
+.register table { font-size: 14px; }
+
+/* ---------- tables */
+.docs-main table { width: 100%; margin: 10px 0 22px; }
+table.striped tbody tr:nth-child(odd), .striped table tbody tr:nth-child(odd) { background: var(--tint); }
+table.hover tbody tr:hover, .hover table tbody tr:hover { background: var(--line-soft); }
+td:first-child, th:first-child { padding-left: 6px; }
+.table-wrap, .docs-main .cell-output-display { overflow-x: auto; }
+caption, .table-caption { caption-side: top; text-align: left; font-size: 13.5px; color: var(--ink-soft); padding-bottom: 6px; }
+
+/* ---------- callouts: kit look, with the Quarto title kept */
+.callout { border: 1px solid var(--line); border-left: 4px solid var(--teal); background: var(--tint); padding: 14px 20px; margin: 22px 0; }
+.callout .callout-header { font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+.callout-tip { border-left-color: var(--amber); }
+.callout-warning, .callout-important { border-left-color: var(--sev-high); }
+.callout-caution { border-left-color: var(--sev-crit); }
+.callout .callout-body-container > :first-child { margin-top: 0; }
+
+/* ---------- figures: SVGs drawn in dark ink keep a light plate in the dark scheme */
+.docs-main figure img, .docs-main .quarto-figure img { display: block; margin: 0 auto; }
+@media (prefers-color-scheme: dark) {
+  .docs-main img[src$=".svg"], .docs-main img[src$=".png"] { background: #ffffff; padding: 6px; }
+}
+
+/* ---------- Bootstrap leftovers in the page sources, mapped onto the kit */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px 24px; }
+.g-col-12 { grid-column: span 12; }
+@media (min-width: 760px) { .g-col-md-6 { grid-column: span 6; } }
+a.btn { display: inline-block; font-size: 14px; font-weight: 600; padding: 4px 12px; border: 1px solid var(--teal); border-radius: 2px; }
+a.btn:hover { text-decoration: none; background: var(--tint); }
+
+/* ---------- home */
+.mission h1 strong { color: var(--teal); font-weight: 600; }
+.verdict .v strong { color: var(--teal); }
+.quicklinks .sep { padding: 0 8px; color: var(--line); }
+.cmp-table td, .cmp-table th { font-size: 14.5px; }
+.cmp-table td.num { font-family: var(--mono); font-size: 13.5px; white-space: nowrap; }
+
+/* ---------- the log: entries are written in Markdown, so lists can nest */
+.log-entry ol { font-size: 15px; max-width: 78ch; margin: 0 0 8px; padding-left: 22px; }
+.log-entry li { margin-bottom: 4px; }
+.log-entry blockquote { border-left: 3px solid var(--line); color: var(--ink-soft); margin: 8px 0; padding: 2px 0 2px 16px; }
+.log-entry .log-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.log-entry .num { font-family: var(--mono); font-size: 12.5px; color: var(--teal); }
+.log-entry .d { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
+
+/* ---------- version stamp on the memoir pages */
+.version-note { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
