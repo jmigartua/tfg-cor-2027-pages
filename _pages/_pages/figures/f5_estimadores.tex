@@ -1,0 +1,72 @@
+\input{common}
+\def\gac{9.81}
+\def\tA{0.4515}
+\def\tB{1.1739}
+\def\tC{1.7517}
+\def\tD{2.2140}
+\newcommand{\traj}{%
+  \addplot[cA,thick,domain=0:\tA,samples=60]{1-0.5*\gac*x^2};
+  \addplot[cA,thick,domain=\tA:\tB,samples=80]{3.543*(x-\tA)-0.5*\gac*(x-\tA)^2};
+  \addplot[cA,thick,domain=\tB:\tC,samples=70]{2.834*(x-\tB)-0.5*\gac*(x-\tB)^2};
+  \addplot[cA,thick,domain=\tC:\tD,samples=60]{2.267*(x-\tC)-0.5*\gac*(x-\tC)^2};
+}
+\pgfplotsset{panel/.style={
+  width=6.4cm, height=5.0cm, xmin=-0.10, xmax=2.42, ymin=-0.34, ymax=1.34,
+  xlabel={$t$}, xlabel style={font=\scriptsize,at={(axis description cs:1,0)},anchor=north east},
+  ytick=\empty, xtick=\empty, axis y line=none, axis x line=none, clip=false,
+  title style={font=\footnotesize\bfseries, yshift=-3pt}}}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=3 by 1, horizontal sep=0.55cm}, panel]
+
+% ================= E1 =================
+\nextgroupplot[title={E1 $\cdot$ alturas}]
+\draw[-{Stealth[length=4pt]},gray!60] (axis cs:-0.08,0) -- (axis cs:2.40,0);
+\node[font=\scriptsize,text=gray!60!black,anchor=south west] at (axis cs:2.41,-0.02) {$t$};
+\traj
+\draw[cB,densely dashed,thick] (axis cs:-0.05,-0.10) -- (axis cs:2.05,-0.10);
+\node[cB,font=\scriptsize,anchor=west] at (axis cs:2.07,-0.10) {$\delta$};
+\draw[{Stealth[length=4pt]}-{Stealth[length=4pt]},cD,thick]
+   (axis cs:0.075,-0.10) -- (axis cs:0.075,1.0)
+   node[midway,fill=white,inner sep=1.2pt,font=\scriptsize,text=cD] {$h_1$};
+\draw[{Stealth[length=4pt]}-{Stealth[length=4pt]},cD,thick]
+   (axis cs:0.813,-0.10) -- (axis cs:0.813,0.64)
+   node[midway,fill=white,inner sep=1.2pt,font=\scriptsize,text=cD] {$h_2$};
+\node[font=\small,anchor=north east] at (axis cs:2.40,1.34) {$e=\sqrt{h_2/h_1}$};
+\node[font=\scriptsize,anchor=north west,text=gray!60!black,align=left,text width=3.6cm]
+   at (axis cs:0.02,-0.15) {necesita el nivel\\del impacto};
+
+% ================= E2 =================
+\nextgroupplot[title={E2 $\cdot$ velocidades}]
+\draw[-{Stealth[length=4pt]},gray!60] (axis cs:-0.08,0) -- (axis cs:2.40,0);
+\node[font=\scriptsize,text=gray!60!black,anchor=south west] at (axis cs:2.41,-0.02) {$t$};
+\traj
+\addplot[cB,very thick,domain=0.215:0.4515,samples=2]{-4.429*(x-\tA)};
+\addplot[cB,very thick,domain=0.4515:0.680,samples=2]{3.543*(x-\tA)};
+\node[cB,font=\scriptsize,anchor=south east] at (axis cs:0.235,1.02) {$v_1$};
+\node[cB,font=\scriptsize,anchor=south west] at (axis cs:0.690,0.78) {$v_2$};
+\node[font=\small,anchor=north east] at (axis cs:2.40,1.34) {$e=|v_2/v_1|$};
+\node[font=\scriptsize,anchor=north west,text=gray!60!black,align=left,text width=3.6cm]
+   at (axis cs:0.02,-0.15) {usa pendientes:\\el nivel se cancela};
+
+% ================= E3 =================
+\nextgroupplot[title={E3 $\cdot$ tren de rebotes}]
+\draw[-{Stealth[length=4pt]},gray!60] (axis cs:-0.08,0) -- (axis cs:2.40,0);
+\node[font=\scriptsize,text=gray!60!black,anchor=south west] at (axis cs:2.41,-0.02) {$t$};
+\traj
+\fill[cB] (axis cs:0.4515,0) circle (1.7pt);
+\fill[cB] (axis cs:1.1739,0) circle (1.7pt);
+\fill[cB] (axis cs:1.7517,0) circle (1.7pt);
+\fill[cB] (axis cs:2.2140,0) circle (1.7pt);
+\draw[decorate,decoration={brace,amplitude=4pt,mirror},cB,thick]
+  (axis cs:0.4515,-0.05) -- (axis cs:1.1739,-0.05)
+  node[midway,below=4.5pt,font=\scriptsize,text=cB] {$t_1$};
+\draw[decorate,decoration={brace,amplitude=4pt,mirror},cB,thick]
+  (axis cs:1.1739,-0.05) -- (axis cs:1.7517,-0.05)
+  node[midway,below=4.5pt,font=\scriptsize,text=cB] {$t_2$};
+\node[font=\small,anchor=north east] at (axis cs:2.40,1.34) {$e=t_2/t_1$};
+\node[font=\scriptsize,anchor=north west,text=gray!60!black,align=left,text width=3.9cm]
+   at (axis cs:0.02,-0.24) {sólo instantes: ni escala,\\ni nivel, ni seguimiento};
+\end{groupplot}
+\end{tikzpicture}
+\end{document}
