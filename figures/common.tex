@@ -1,0 +1,16 @@
+\documentclass[border=3pt,tikz]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{amsmath}
+\usepgfplotslibrary{fillbetween}
+\definecolor{cA}{HTML}{1F5673}
+\definecolor{cB}{HTML}{C1553B}
+\definecolor{cC}{HTML}{4E8098}
+\definecolor{cD}{HTML}{D9A441}
+\pgfplotsset{
+  every axis/.append style={
+    font=\small, line width=.7pt, tick style={line width=.6pt},
+    grid=major, grid style={gray!25, line width=.4pt},
+    axis line style={gray!60},
+    legend style={draw=gray!40, font=\footnotesize, fill=white, fill opacity=.9, text opacity=1},
+  }}

@@ -1,0 +1,19 @@
+\input{common}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=10.5cm,height=7cm,
+  xlabel={Desplazamiento sistem\'atico supuesto $\delta$ (p\'ixeles)},
+  ylabel={Pendiente $\mathrm{d}e/\mathrm{d}h_1$ (m$^{-1}$)},
+  xmin=0,xmax=12,ymin=-0.03,ymax=0.015,
+  legend style={at={(0.02,0.03)},anchor=south west}, legend cell align=left]
+\fill[gray!18] (axis cs:5.3,-0.03) rectangle (axis cs:10.5,0.015);
+\addplot[black,dotted,thick,forget plot,domain=0:12,samples=2]{0};
+\addlegendimage{area legend,fill=gray!18,draw=gray!40}
+\addlegendentry{$\delta$ estimado independientemente (5{,}3--10{,}5 px)}
+\addplot[cA,thick] table[x=delta,y=golfzo]{sens.dat}; \addlegendentry{golf / zorua}
+\addplot[cB,thick] table[x=delta,y=teniseg]{sens.dat}; \addlegendentry{tenis / egurra}
+\addplot[cC,thick] table[x=delta,y=teniszo]{sens.dat}; \addlegendentry{tenis / zorua}
+\addplot[cD,thick,densely dashed] table[x=delta,y=golfeg]{sens.dat}; \addlegendentry{golf / egurra (ya no significativa)}
+\end{axis}
+\end{tikzpicture}
+\end{document}

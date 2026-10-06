@@ -1,0 +1,14 @@
+\input{common}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=10.5cm,height=6.4cm, ybar, bar width=14pt,
+  xlabel={Altura nominal de ca\'ida $h_1$ (m)},
+  ylabel={$\sigma_e$ por 1 p\'ixel de error},
+  symbolic x coords={0.5,1.0,1.5}, xtick=data, ymin=0, ymax=0.014,
+  legend pos=north east, legend cell align=left, nodes near coords,
+  every node near coord/.append style={font=\tiny,/pgf/number format/fixed,/pgf/number format/precision=4}]
+\addplot[fill=cB!75,draw=cB] table[x=h,y=down]{prec.dat}; \addlegendentry{480$\times$270 (pipeline actual)}
+\addplot[fill=cA!70,draw=cA] table[x=h,y=native]{prec.dat}; \addlegendentry{1920$\times$1080 (nativo)}
+\end{axis}
+\end{tikzpicture}
+\end{document}

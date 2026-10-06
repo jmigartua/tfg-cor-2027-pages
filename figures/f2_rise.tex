@@ -1,0 +1,15 @@
+\input{common}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=10.5cm,height=7cm,
+  xlabel={$t_{\mathrm{subida}}^2$ (fotogramas$^2$)}, ylabel={$h_2$ (p\'ixeles)},
+  xmin=0,xmax=17000,ymin=0,ymax=150, legend pos=north west, legend cell align=left]
+\addplot[only marks,mark=*,mark size=1.3pt,cA,opacity=.6] table[x=rise2,y=h2]{rise2.dat};
+\addlegendentry{59 impactos}
+\addplot[cB,thick,domain=0:17000,samples=2]{0.008842274544*x+4.688739};
+\addlegendentry{ajuste: $h_2=8.84\times10^{-3}\,t^2+4.69$}
+\addplot[gray,dashed,thick,domain=0:17000,samples=2]{0.008842274544*x};
+\addlegendentry{f\'isica exigida: ordenada $=0$}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html class="staticrypt-html">
+    <head>
+        <meta charset="utf-8" />
+        <title>TFG COR 2027</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- do not cache this page -->
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+
+        <style>
+            .staticrypt-hr {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border: 0;
+                border-top: 1px solid #eee;
+            }
+
+            .staticrypt-page {
+                width: 360px;
+                padding: 8% 0 0;
+                margin: auto;
+                box-sizing: border-box;
+            }
+
+            .staticrypt-form {
+                position: relative;
+                z-index: 1;
+                background: #ffffff;
+                max-width: 360px;
+                margin: 0 auto 100px;
+                padding: 45px;
+                text-align: center;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            }
+
+            .staticrypt-form input[type="password"],
+            input[type="text"] {
+                background: inherit;
+                border: 0;
+                box-sizing: border-box; /* This ensures padding is included in the total width */
+                font-size: 14px;
+                outline: 0;
+                padding: 15px 30px 15px 15px; /* Adjust the padding to ensure there is space for the icon */
+                width: 100%;
+            }
+
+            .staticrypt-password-container {
+                position: relative;
+                outline: 0;
+                background: #f2f2f2;
+                width: 100%;
+                border: 0;
+                margin: 0 0 15px;
+                box-sizing: border-box;
+            }
+
+            .staticrypt-toggle-password-visibility {
+                cursor: pointer;
+                height: 20px;
+                opacity: 60%;
+                padding: 13px;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+            }
+
+            .staticrypt-form .staticrypt-decrypt-button {
+                text-transform: uppercase;
+                outline: 0;
+                background: #8c2f39;
+                width: 100%;
+                border: 0;
+                padding: 15px;
+                color: #ffffff;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .staticrypt-form .staticrypt-decrypt-button:hover,
+            .staticrypt-form .staticrypt-decrypt-button:active,
+            .staticrypt-form .staticrypt-decrypt-button:focus {
+                background: #8c2f39;
+                filter: brightness(92%);
+            }
+
+            .staticrypt-html {
+                height: 100%;
+            }
+
+            .staticrypt-body {
+                height: 100%;
+                margin: 0;
+            }
+
+            .staticrypt-content {
+                height: 100%;
+                margin-bottom: 1em;
+                background: #f5f2ed;
+                font-family: "Arial", sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .staticrypt-instructions {
+                margin-top: -1em;
+                margin-bottom: 1em;
+            }
+
+            .staticrypt-title {
+                font-size: 1.5em;
+            }
+
+            label.staticrypt-remember {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1em;
+            }
+
+            .staticrypt-remember input[type="checkbox"] {
+                transform: scale(1.5);
+                margin-right: 1em;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            .staticrypt-spinner-container {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .staticrypt-spinner {
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                vertical-align: text-bottom;
+                border: 0.25em solid gray;
+                border-right-color: transparent;
+                border-radius: 50%;
+                -webkit-animation: spinner-border 0.75s linear infinite;
+                animation: spinner-border 0.75s linear infinite;
+                animation-duration: 0.75s;
+                animation-timing-function: linear;
+                animation-delay: 0s;
+                animation-iteration-count: infinite;
+                animation-direction: normal;
+                animation-fill-mode: none;
+                animation-play-state: running;
+                animation-name: spinner-border;
+            }
+
+            @keyframes spinner-border {
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @media screen and (-webkit-min-device-pixel-ratio: 0) {
+                .staticrypt-form input[type="password"],
+                input[type="text"] {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    </head>
+
+    <body class="staticrypt-body">
+        <div id="staticrypt_loading" class="staticrypt-spinner-container">
+            <div class="staticrypt-spinner"></div>
+        </div>
+
+        <div id="staticrypt_content" class="staticrypt-content hidden">
+            <div class="staticrypt-page">
+                <div class="staticrypt-form">
+                    <div class="staticrypt-instructions">
+                        <p class="staticrypt-title">TFG COR 2027</p>
+                        <p>Documento interno de dirección. Introduce la contraseña.</p>
+                    </div>
+
+                    <hr class="staticrypt-hr" />
+
+                    <form id="staticrypt-form" action="#" method="post">
+                        <div class="staticrypt-password-container">
+                            <input
+                                id="staticrypt-password"
+                                type="password"
+                                name="password"
+                                placeholder="Contraseña"
+                                autofocus
+                            />
+
+                            <img
+                                class="staticrypt-toggle-password-visibility"
+                                alt="Show password"
+                                title="Show password"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTM4LjggNS4xQzI4LjQtMy4xIDEzLjMtMS4yIDUuMSA5LjJTLTEuMiAzNC43IDkuMiA0Mi45bDU5MiA0NjRjMTAuNCA4LjIgMjUuNSA2LjMgMzMuNy00LjFzNi4zLTI1LjUtNC4xLTMzLjdMNTI1LjYgMzg2LjdjMzkuNi00MC42IDY2LjQtODYuMSA3OS45LTExOC40YzMuMy03LjkgMy4zLTE2LjcgMC0yNC42Yy0xNC45LTM1LjctNDYuMi04Ny43LTkzLTEzMS4xQzQ2NS41IDY4LjggNDAwLjggMzIgMzIwIDMyYy02OC4yIDAtMTI1IDI2LjMtMTY5LjMgNjAuOEwzOC44IDUuMXpNMjIzLjEgMTQ5LjVDMjQ4LjYgMTI2LjIgMjgyLjcgMTEyIDMyMCAxMTJjNzkuNSAwIDE0NCA2NC41IDE0NCAxNDRjMCAyNC45LTYuMyA0OC4zLTE3LjQgNjguN0w0MDggMjk0LjVjOC40LTE5LjMgMTAuNi00MS40IDQuOC02My4zYy0xMS4xLTQxLjUtNDcuOC02OS40LTg4LjYtNzEuMWMtNS44LS4yLTkuMiA2LjEtNy40IDExLjdjMi4xIDYuNCAzLjMgMTMuMiAzLjMgMjAuM2MwIDEwLjItMi40IDE5LjgtNi42IDI4LjNsLTkwLjMtNzAuOHpNMzczIDM4OS45Yy0xNi40IDYuNS0zNC4zIDEwLjEtNTMgMTAuMWMtNzkuNSAwLTE0NC02NC41LTE0NC0xNDRjMC02LjkgLjUtMTMuNiAxLjQtMjAuMkw4My4xIDE2MS41QzYwLjMgMTkxLjIgNDQgMjIwLjggMzQuNSAyNDMuN2MtMy4zIDcuOS0zLjMgMTYuNyAwIDI0LjZjMTQuOSAzNS43IDQ2LjIgODcuNyA5MyAxMzEuMUMxNzQuNSA0NDMuMiAyMzkuMiA0ODAgMzIwIDQ4MGM0Ny44IDAgODkuOS0xMi45IDEyNi4yLTMyLjVMMzczIDM4OS45eiIvPjwvc3ZnPg=="
+                            />
+                        </div>
+
+                        <label id="staticrypt-remember-label" class="staticrypt-remember hidden">
+                            <input id="staticrypt-remember" type="checkbox" name="remember" />
+                            Recordar en este navegador (30 días)
+                        </label>
+
+                        <input type="submit" class="staticrypt-decrypt-button" value="Abrir" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // these variables will be filled when generating the file - the template format is 'variable_name'
+            const staticryptInitiator = ((function(){
+  const exports = {};
+  const cryptoEngine = ((function(){
+  const exports = {};
+  const { subtle } = crypto;
+
+const IV_BITS = 16 * 8;
+const HEX_BITS = 4;
+const ENCRYPTION_ALGO = "AES-CBC";
+
+/**
+ * Translates between utf8 encoded hexadecimal strings
+ * and Uint8Array bytes.
+ */
+const HexEncoder = {
+    /**
+     * hex string -> bytes
+     * @param {string} hexString
+     * @returns {Uint8Array}
+     */
+    parse: function (hexString) {
+        if (hexString.length % 2 !== 0) throw "Invalid hexString";
+        const arrayBuffer = new Uint8Array(hexString.length / 2);
+
+        for (let i = 0; i < hexString.length; i += 2) {
+            const byteValue = parseInt(hexString.substring(i, i + 2), 16);
+            if (isNaN(byteValue)) {
+                throw "Invalid hexString";
+            }
+            arrayBuffer[i / 2] = byteValue;
+        }
+        return arrayBuffer;
+    },
+
+    /**
+     * bytes -> hex string
+     * @param {Uint8Array} bytes
+     * @returns {string}
+     */
+    stringify: function (bytes) {
+        const hexBytes = [];
+
+        for (let i = 0; i < bytes.length; ++i) {
+            let byteString = bytes[i].toString(16);
+            if (byteString.length < 2) {
+                byteString = "0" + byteString;
+            }
+            hexBytes.push(byteString);
+        }
+        return hexBytes.join("");
+    },
+};
+
+/**
+ * Translates between utf8 strings and Uint8Array bytes.
+ */
+const UTF8Encoder = {
+    parse: function (str) {
+        return new TextEncoder().encode(str);
+    },
+
+    stringify: function (bytes) {
+        return new TextDecoder().decode(bytes);
+    },
+};
+
+/**
+ * Salt and encrypt a msg with a password.
+ */
+async function encrypt(msg, hashedPassword) {
+    // Must be 16 bytes, unpredictable, and preferably cryptographically random. However, it need not be secret.
+    // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#parameters
+    const iv = crypto.getRandomValues(new Uint8Array(IV_BITS / 8));
+
+    const key = await subtle.importKey("raw", HexEncoder.parse(hashedPassword), ENCRYPTION_ALGO, false, ["encrypt"]);
+
+    const encrypted = await subtle.encrypt(
+        {
+            name: ENCRYPTION_ALGO,
+            iv: iv,
+        },
+        key,
+        UTF8Encoder.parse(msg)
+    );
+
+    // iv will be 32 hex characters, we prepend it to the ciphertext for use in decryption
+    return HexEncoder.stringify(iv) + HexEncoder.stringify(new Uint8Array(encrypted));
+}
+exports.encrypt = encrypt;
+
+/**
+ * Decrypt a salted msg using a password.
+ *
+ * @param {string} encryptedMsg
+ * @param {string} hashedPassword
+ * @returns {Promise<string>}
+ */
+async function decrypt(encryptedMsg, hashedPassword) {
+    const ivLength = IV_BITS / HEX_BITS;
+    const iv = HexEncoder.parse(encryptedMsg.substring(0, ivLength));
+    const encrypted = encryptedMsg.substring(ivLength);
+
+    const key = await subtle.importKey("raw", HexEncoder.parse(hashedPassword), ENCRYPTION_ALGO, false, ["decrypt"]);
+
+    const outBuffer = await subtle.decrypt(
+        {
+            name: ENCRYPTION_ALGO,
+            iv: iv,
+        },
+        key,
+        HexEncoder.parse(encrypted)
+    );
+
+    return UTF8Encoder.stringify(new Uint8Array(outBuffer));
+}
+exports.decrypt = decrypt;
+
+/**
+ * Salt and hash the password so it can be stored in localStorage without opening a password reuse vulnerability.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @returns {Promise<string>}
+ */
+async function hashPassword(password, salt) {
+    // we hash the password in multiple steps, each adding more iterations. This is because we used to allow less
+    // iterations, so for backward compatibility reasons, we need to support going from that to more iterations.
+    let hashedPassword = await hashLegacyRound(password, salt);
+
+    hashedPassword = await hashSecondRound(hashedPassword, salt);
+
+    return hashThirdRound(hashedPassword, salt);
+}
+exports.hashPassword = hashPassword;
+
+/**
+ * This hashes the password with 1k iterations. This is a low number, we need this function to support backwards
+ * compatibility.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @returns {Promise<string>}
+ */
+function hashLegacyRound(password, salt) {
+    return pbkdf2(password, salt, 1000, "SHA-1");
+}
+exports.hashLegacyRound = hashLegacyRound;
+
+/**
+ * Add a second round of iterations. This is because we used to use 1k, so for backwards compatibility with
+ * remember-me/autodecrypt links, we need to support going from that to more iterations.
+ *
+ * @param hashedPassword
+ * @param salt
+ * @returns {Promise<string>}
+ */
+function hashSecondRound(hashedPassword, salt) {
+    return pbkdf2(hashedPassword, salt, 14000, "SHA-256");
+}
+exports.hashSecondRound = hashSecondRound;
+
+/**
+ * Add a third round of iterations to bring total number to 600k. This is because we used to use 1k, then 15k, so for
+ * backwards compatibility with remember-me/autodecrypt links, we need to support going from that to more iterations.
+ *
+ * @param hashedPassword
+ * @param salt
+ * @returns {Promise<string>}
+ */
+function hashThirdRound(hashedPassword, salt) {
+    return pbkdf2(hashedPassword, salt, 585000, "SHA-256");
+}
+exports.hashThirdRound = hashThirdRound;
+
+/**
+ * Salt and hash the password so it can be stored in localStorage without opening a password reuse vulnerability.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @param {int} iterations
+ * @param {string} hashAlgorithm
+ * @returns {Promise<string>}
+ */
+async function pbkdf2(password, salt, iterations, hashAlgorithm) {
+    const key = await subtle.importKey("raw", UTF8Encoder.parse(password), "PBKDF2", false, ["deriveBits"]);
+
+    const keyBytes = await subtle.deriveBits(
+        {
+            name: "PBKDF2",
+            hash: hashAlgorithm,
+            iterations,
+            salt: UTF8Encoder.parse(salt),
+        },
+        key,
+        256
+    );
+
+    return HexEncoder.stringify(new Uint8Array(keyBytes));
+}
+
+function generateRandomSalt() {
+    const bytes = crypto.getRandomValues(new Uint8Array(128 / 8));
+
+    return HexEncoder.stringify(new Uint8Array(bytes));
+}
+exports.generateRandomSalt = generateRandomSalt;
+
+async function signMessage(hashedPassword, message) {
+    const key = await subtle.importKey(
+        "raw",
+        HexEncoder.parse(hashedPassword),
+        {
+            name: "HMAC",
+            hash: "SHA-256",
+        },
+        false,
+        ["sign"]
+    );
+    const signature = await subtle.sign("HMAC", key, UTF8Encoder.parse(message));
+
+    return HexEncoder.stringify(new Uint8Array(signature));
+}
+exports.signMessage = signMessage;
+
+function getRandomAlphanum() {
+    const possibleCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    let byteArray;
+    let parsedInt;
+
+    // Keep generating new random bytes until we get a value that falls
+    // within a range that can be evenly divided by possibleCharacters.length
+    do {
+        byteArray = crypto.getRandomValues(new Uint8Array(1));
+        // extract the lowest byte to get an int from 0 to 255 (probably unnecessary, since we're only generating 1 byte)
+        parsedInt = byteArray[0] & 0xff;
+    } while (parsedInt >= 256 - (256 % possibleCharacters.length));
+
+    // Take the modulo of the parsed integer to get a random number between 0 and totalLength - 1
+    const randomIndex = parsedInt % possibleCharacters.length;
+
+    return possibleCharacters[randomIndex];
+}
+
+/**
+ * Generate a random string of a given length.
+ *
+ * @param {int} length
+ * @returns {string}
+ */
+function generateRandomString(length) {
+    let randomString = "";
+
+    for (let i = 0; i < length; i++) {
+        randomString += getRandomAlphanum();
+    }
+
+    return randomString;
+}
+exports.generateRandomString = generateRandomString;
+
+  return exports;
+})());
+const codec = ((function(){
+  const exports = {};
+  /**
+ * Initialize the codec with the provided cryptoEngine - this return functions to encode and decode messages.
+ *
+ * @param cryptoEngine - the engine to use for encryption / decryption
+ */
+function init(cryptoEngine) {
+    const exports = {};
+
+    /**
+     * Top-level function for encoding a message.
+     * Includes password hashing, encryption, and signing.
+     *
+     * @param {string} msg
+     * @param {string} password
+     * @param {string} salt
+     *
+     * @returns {string} The encoded text
+     */
+    async function encode(msg, password, salt) {
+        const hashedPassword = await cryptoEngine.hashPassword(password, salt);
+
+        const encrypted = await cryptoEngine.encrypt(msg, hashedPassword);
+
+        // we use the hashed password in the HMAC because this is effectively what will be used a password (so we can store
+        // it in localStorage safely, we don't use the clear text password)
+        const hmac = await cryptoEngine.signMessage(hashedPassword, encrypted);
+
+        return hmac + encrypted;
+    }
+    exports.encode = encode;
+
+    /**
+     * Encode using a password that has already been hashed. This is useful to encode multiple messages in a row, that way
+     * we don't need to hash the password multiple times.
+     *
+     * @param {string} msg
+     * @param {string} hashedPassword
+     *
+     * @returns {string} The encoded text
+     */
+    async function encodeWithHashedPassword(msg, hashedPassword) {
+        const encrypted = await cryptoEngine.encrypt(msg, hashedPassword);
+
+        // we use the hashed password in the HMAC because this is effectively what will be used a password (so we can store
+        // it in localStorage safely, we don't use the clear text password)
+        const hmac = await cryptoEngine.signMessage(hashedPassword, encrypted);
+
+        return hmac + encrypted;
+    }
+    exports.encodeWithHashedPassword = encodeWithHashedPassword;
+
+    /**
+     * Top-level function for decoding a message.
+     * Includes signature check and decryption.
+     *
+     * @param {string} signedMsg
+     * @param {string} hashedPassword
+     * @param {string} salt
+     * @param {int} backwardCompatibleAttempt
+     * @param {string} originalPassword
+     *
+     * @returns {Object} {success: true, decoded: string} | {success: false, message: string}
+     */
+    async function decode(signedMsg, hashedPassword, salt, backwardCompatibleAttempt = 0, originalPassword = "") {
+        const encryptedHMAC = signedMsg.substring(0, 64);
+        const encryptedMsg = signedMsg.substring(64);
+        const decryptedHMAC = await cryptoEngine.signMessage(hashedPassword, encryptedMsg);
+
+        if (decryptedHMAC !== encryptedHMAC) {
+            // we have been raising the number of iterations in the hashing algorithm multiple times, so to support the old
+            // remember-me/autodecrypt links we need to try bringing the old hashes up to speed.
+            originalPassword = originalPassword || hashedPassword;
+            if (backwardCompatibleAttempt === 0) {
+                const updatedHashedPassword = await cryptoEngine.hashThirdRound(originalPassword, salt);
+
+                return decode(signedMsg, updatedHashedPassword, salt, backwardCompatibleAttempt + 1, originalPassword);
+            }
+            if (backwardCompatibleAttempt === 1) {
+                let updatedHashedPassword = await cryptoEngine.hashSecondRound(originalPassword, salt);
+                updatedHashedPassword = await cryptoEngine.hashThirdRound(updatedHashedPassword, salt);
+
+                return decode(signedMsg, updatedHashedPassword, salt, backwardCompatibleAttempt + 1, originalPassword);
+            }
+
+            return { success: false, message: "Signature mismatch" };
+        }
+
+        return {
+            success: true,
+            decoded: await cryptoEngine.decrypt(encryptedMsg, hashedPassword),
+        };
+    }
+    exports.decode = decode;
+
+    return exports;
+}
+exports.init = init;
+
+  return exports;
+})());
+const decode = codec.init(cryptoEngine).decode;
+
+/**
+ * Initialize the staticrypt module, that exposes functions callbable by the password_template.
+ *
+ * @param {{
+ *  staticryptEncryptedMsgUniqueVariableName: string,
+ *  isRememberEnabled: boolean,
+ *  rememberDurationInDays: number,
+ *  staticryptSaltUniqueVariableName: string,
+ * }} staticryptConfig - object of data that is stored on the password_template at encryption time.
+ *
+ * @param {{
+ *  rememberExpirationKey: string,
+ *  rememberPassphraseKey: string,
+ *  replaceHtmlCallback: function,
+ *  clearLocalStorageCallback: function,
+ * }} templateConfig - object of data that can be configured by a custom password_template.
+ */
+function init(staticryptConfig, templateConfig) {
+    const exports = {};
+
+    /**
+     * Decrypt our encrypted page, replace the whole HTML.
+     *
+     * @param {string} hashedPassword
+     * @returns {Promise<boolean>}
+     */
+    async function decryptAndReplaceHtml(hashedPassword) {
+        const { staticryptEncryptedMsgUniqueVariableName, staticryptSaltUniqueVariableName } = staticryptConfig;
+        const { replaceHtmlCallback } = templateConfig;
+
+        const result = await decode(
+            staticryptEncryptedMsgUniqueVariableName,
+            hashedPassword,
+            staticryptSaltUniqueVariableName
+        );
+        if (!result.success) {
+            return false;
+        }
+        const plainHTML = result.decoded;
+
+        // if the user configured a callback call it, otherwise just replace the whole HTML
+        if (typeof replaceHtmlCallback === "function") {
+            replaceHtmlCallback(plainHTML);
+        } else {
+            document.write(plainHTML);
+            document.close();
+        }
+
+        return true;
+    }
+
+    /**
+     * Attempt to decrypt the page and replace the whole HTML.
+     *
+     * @param {string} password
+     * @param {boolean} isRememberChecked
+     *
+     * @returns {Promise<{isSuccessful: boolean, hashedPassword?: string}>} - we return an object, so that if we want to
+     *   expose more information in the future we can do it without breaking the password_template
+     */
+    async function handleDecryptionOfPage(password, isRememberChecked) {
+        const { staticryptSaltUniqueVariableName } = staticryptConfig;
+
+        // decrypt and replace the whole page
+        const hashedPassword = await cryptoEngine.hashPassword(password, staticryptSaltUniqueVariableName);
+        return handleDecryptionOfPageFromHash(hashedPassword, isRememberChecked);
+    }
+    exports.handleDecryptionOfPage = handleDecryptionOfPage;
+
+    async function handleDecryptionOfPageFromHash(hashedPassword, isRememberChecked) {
+        const { isRememberEnabled, rememberDurationInDays } = staticryptConfig;
+        const { rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        const isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassword);
+
+        if (!isDecryptionSuccessful) {
+            return {
+                isSuccessful: false,
+                hashedPassword,
+            };
+        }
+
+        // remember the hashedPassword and set its expiration if necessary
+        if (isRememberEnabled && isRememberChecked) {
+            window.localStorage.setItem(rememberPassphraseKey, hashedPassword);
+
+            // set the expiration if the duration isn't 0 (meaning no expiration)
+            if (rememberDurationInDays > 0) {
+                window.localStorage.setItem(
+                    rememberExpirationKey,
+                    (new Date().getTime() + rememberDurationInDays * 24 * 60 * 60 * 1000).toString()
+                );
+            }
+        }
+
+        return {
+            isSuccessful: true,
+            hashedPassword,
+        };
+    }
+    exports.handleDecryptionOfPageFromHash = handleDecryptionOfPageFromHash;
+
+    /**
+     * Clear localstorage from staticrypt related values
+     */
+    function clearLocalStorage() {
+        const { clearLocalStorageCallback, rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        if (typeof clearLocalStorageCallback === "function") {
+            clearLocalStorageCallback();
+        } else {
+            localStorage.removeItem(rememberPassphraseKey);
+            localStorage.removeItem(rememberExpirationKey);
+        }
+    }
+
+    async function handleDecryptOnLoad() {
+        let isSuccessful = await decryptOnLoadFromUrl();
+
+        if (!isSuccessful) {
+            isSuccessful = await decryptOnLoadFromRememberMe();
+        }
+
+        return { isSuccessful };
+    }
+    exports.handleDecryptOnLoad = handleDecryptOnLoad;
+
+    /**
+     * Clear storage if we are logging out
+     *
+     * @returns {boolean} - whether we logged out
+     */
+    function logoutIfNeeded() {
+        const logoutKey = "staticrypt_logout";
+
+        // handle logout through query param
+        const queryParams = new URLSearchParams(window.location.search);
+        if (queryParams.has(logoutKey)) {
+            clearLocalStorage();
+            return true;
+        }
+
+        // handle logout through URL fragment
+        const hash = window.location.hash.substring(1);
+        if (hash.includes(logoutKey)) {
+            clearLocalStorage();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * To be called on load: check if we want to try to decrypt and replace the HTML with the decrypted content, and
+     * try to do it if needed.
+     *
+     * @returns {Promise<boolean>} true if we derypted and replaced the whole page, false otherwise
+     */
+    async function decryptOnLoadFromRememberMe() {
+        const { rememberDurationInDays } = staticryptConfig;
+        const { rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        // if we are login out, terminate
+        if (logoutIfNeeded()) {
+            return false;
+        }
+
+        // if there is expiration configured, check if we're not beyond the expiration
+        if (rememberDurationInDays && rememberDurationInDays > 0) {
+            const expiration = localStorage.getItem(rememberExpirationKey),
+                isExpired = expiration && new Date().getTime() > parseInt(expiration);
+
+            if (isExpired) {
+                clearLocalStorage();
+                return false;
+            }
+        }
+
+        const hashedPassword = localStorage.getItem(rememberPassphraseKey);
+
+        if (hashedPassword) {
+            // try to decrypt
+            const isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassword);
+
+            // if the decryption is unsuccessful the password might be wrong - silently clear the saved data and let
+            // the user fill the password form again
+            if (!isDecryptionSuccessful) {
+                clearLocalStorage();
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    async function decryptOnLoadFromUrl() {
+        const passwordKey = "staticrypt_pwd";
+        const rememberMeKey = "remember_me";
+
+        // try to get the password from the query param (for backward compatibility - we now want to avoid this method,
+        // since it sends the hashed password to the server which isn't needed)
+        const queryParams = new URLSearchParams(window.location.search);
+        const hashedPasswordQuery = queryParams.get(passwordKey);
+        const rememberMeQuery = queryParams.get(rememberMeKey);
+
+        const urlFragment = window.location.hash.substring(1);
+        // get the password from the url fragment
+        const hashedPasswordRegexMatch = urlFragment.match(new RegExp(passwordKey + "=([^&]*)"));
+        const hashedPasswordFragment = hashedPasswordRegexMatch ? hashedPasswordRegexMatch[1] : null;
+        const rememberMeFragment = urlFragment.includes(rememberMeKey);
+
+        const hashedPassword = hashedPasswordFragment || hashedPasswordQuery;
+        const rememberMe = rememberMeFragment || rememberMeQuery;
+
+        if (hashedPassword) {
+            return handleDecryptionOfPageFromHash(hashedPassword, rememberMe);
+        }
+
+        return false;
+    }
+
+    return exports;
+}
+exports.init = init;
+
+  return exports;
+})());
+            const templateError = "Contraseña incorrecta",
+                templateToggleAltShow = "Show password",
+                templateToggleAltHide = "Hide password",
+                isRememberEnabled = true,
+                staticryptConfig = {"staticryptEncryptedMsgUniqueVariableName":"aa64cd736807c6ba400e35d2f8ec25e50dc9461c23d88568cae9b903cf1f3a1b739ae0c57870a495d1cba66b67a2d65a8fabe1e91ec86399295c9bc565fc2d9633bc813c4489c36c2c0e3a706d45487a18411c114cf69b9af4fadc1182380fe53f632e43ebdd3e6472729c48bfbc56459ce38a1df92088d040231b892606c534644feb97635e83602fb5b8371593589952eb9c522cde6d47e7267fe3617a8d86c6e0fc0169ab379254b10b9966fab7d11cde25bf3e181b14157cba57b2b0517907bfded3a641758052e128ec7fa242d12fb129d2ce682199c42d81d3cc6b5740a903ade844874b496bc7a3e4380b22e5b9263bca586aaa87d10180480f91aaecfad19753f090e058074e5c0438c95f73459340da578eb6561ab5efcbb4116056c59d0ffb1d35d46cef8f71b5152dad8f5d6960fe68c623c513f9b036e064441ec99ab84a39b19c1c8a5431259fc7da72e98d213eaa73efe1864f4231e5d7009902d5d5b6435bb885b3d0f59bb3773442d0ae69ea37bbc87606c027a015cfbcacda3be9c751ad9b9d640279e6be0019d979dd3bdd5d39169d917b72528e62315a970103157acc66e429106697d2e0e446125bb017dd10902c4900d0e6bb754a950162c0dd3b52a6f06e7dd860d646db59a3fb2564faac907e92297c1cc69dba45a1e632c596c653a5dd43c90caec8037f640ee824e2a8d7e2f2179a876a910639fbe21be2990c0cfbb029eed102abe0391c6fb8ccec2c4d2bfd615335ea3199935a0530427d953f2740dd0bb1325981a6857a398548ee7a96a0a75aefb45ce889789757b055379b832613d2cffa06f0815cb13b5a83bf3ed153bf15bd652937f96df22b73eabd6c558c6bcc8000e9ae455ed47c747fa0536607e7bf54057fabdc7239a77616c26cc11203857fbb9dc8667e7be275e0089fefad88ccb0ce6145b72934608b517fae4d1638969ff86c393ff2825d9758cd4e0b5552999cc660654155f3d5a447072f52e84a8d709e1807967581f03477ee8c97a946afdd4f7be4c40e39d33a4d6567fc482139c2bb33c10e82266e1d042e766ec4d8204d055e93b6744b2d00a3723fb9613e4cf947b66df3c804d9eaf58afc1b756dbf0ff8c093dba467c0dfa77df8edac87d79a06b8c53d8fcc8ccb706c4ad906748ae57fecfa376ece97363a1149b8e75a680690a64852998d026373776f5fac31642940720fa4b79c9d8bf2cd16556d95c65dc9f7e9d4469ed35663696a5f774caee6e8aac70ab35b31e3177fca9c1233e5b02b11adf12909f5ecc6a301bd6cbb64157dc245e04a9ba3f993645be46fd67c8ba3c67633541981407b644f1a6f12fe7e40b9266849a59a31615f725b9ba784e7729644e8a1f87022d43dcf0c43591033dc5da75e072fc661e0fd99b5ec8df8014d9f6278bc7a812b238e1e3484fed9240a04d1c895d06647b764a0f33451707be0a6e3aa9d73d0502a8163981df8af440dd1ab28469c7aa3a03bcc89cfb59a78a94a2cce7aad4b20ceefb9e3bc36d99405ad9358e2571573af2d2377441f2f7105f6953781c110b06d1674cb7e43d96037db791e23666de29d3b0379b3bd71b69055fe8f538a4fda4c2a225c1d5521024c557fa9ee7978a8a757ad2dc50eb3ba8c19fa9a28e3b0182d1db4ceefbf8f1df0495866be3103a9fa59eaa5ca0b386570a1db7ed8f952df04698cd32027c921c814971ba09c995cc31b15779bf2bc2b3082482d1a64411b596896ff653460d781f07bbe7a53fa90928bc081659f87eeca457861a8e737ec49b23343072703200141028b74e3410b301f7a2e231bf5d0ee10c9ed534f80db570e057195d4141f1b30c42dbd56748db31b839fa87a49efdc5cc14c19546cbc55b071e4957dd4774a8150bb0b1514f9c689f8851cb28c3933445889c47525972b4b79553e5cb0f27e706834b598ee8052ac512e283e39a4de32d7a9ae19b268148de3e501ff8729696b96eb2e039328742875c1b2e5386e275ee85b1855e0bc0dceb66f5b111c8bd85ff25639e28c593cc130badc9485cf3cefa1c4bf51a9e96192d1cf8a31a5ddae35505bbc6d523d1bffd8aacc2ca4c9d7df4aa51424ac256815509479e55ec2df8080de9526f428adb02bec4e0a0f482fb1a1143ee78140550dc485abd5d89eae65796952ea2c10a982f2f17da6cea1c6058e6cbd236c9841b9fa4b4094ade82b18a69ec856bff08ae108d8b4b5877ebb763ea2d1fdff556dc3657ea9fac6c2e32ed476bbebf740dee124f11a647f25bddf0401addf7c6c87ccec924b16bbbad6d0e13e91c507fc346bb9dc7b0fd4697ba40583bfc8e0e7a9a1ae9fc10a70cc701ba95593d948d6bdb701a711ac9d04b25f4f2ea2eb5206e68a8ca3861dc1e37579e612016a0970dd0827b7f6acba1b19959a0e55f607a3d9768c4cdf3d911e163f385c520db898d5715b1d90aa8f1546f8e0364063aacc6a1d4520ccc8fd8f6e5ce7abc2d1cdb9a3b4d17992fbff868c02a6bc513c5931d3d28cec1baa171589e84fde42192502df308f0355b647a01affd0c37c37b0db945222ea4912c315fb1432fb77f5acd1d4d124612c56ce9f18bd3c41976bc93095dcce842753505322bee71279eefa1059ed34194bfe70ae6b63fedc82ff7b47871578522b4824d0e9d47fe2a49f7058b7c9a64915e87bd365e1406ed97c65d4473b0c98c76ff355321254da0821a4590c28ed3b3348b553513b81de96febe5bf12e9108742221ea2f4075cb3615eb1b463cab2c6c599736e46ba1d0a40934390000656105ceb529905b84068f91254ca760cba7828a5ddb6929dcd2ddc7ad06c97214ce1b7706ee45cc188ac55ab91e0de408c2aafd94514d78a63d6b0273bbd12bbeea660e1a94395fda796797e2bd9f1aacfb6fed835c24d169f9d5b1a14713fe3ad7cb4c02b05e3d55ee286d0ad3b6a5fe2074603f6f329e59236e3e7f32e326ae3e6964039e5c7d0328e7a20f6cd7587e999502e9592cff6a24065cbdf9bb828dc7931a4d6991a3315cfbed637be8ca7317dc4463d3ae3567d5d007551d69b34e814a1edd5c94f84163af7ae8f9f9cb5a4383cc7ff9cbad803f640d781f12da7fc6185a71adad02539b762dfa0675849f8830c03dc2b3f5d11d8a530f470d61444eec6b74e16e826be67e4691f1497cf7cd9cd9ccb35faac8b5caa92d42e01d11ef1bf82b2ab75749c411938554ecc7a4db2ca99ca23e90aa70c6a7c063a7947753e49af2d6293506b3347244ab9c01d18d2ee5d5ecc3f0f6f4dd21f17d9237088f47378c0bc139a68b49ed6086a31b9c6b06c2cabca966504eff05456eb49247a6d44ae2401b2ca2605722a72cec6b595b36d22134d9ce214c64124ed7b78e9013493df307d41b3e34b5b7dc0db94aeb99a5e5783d2a2cae2067c7851ca98075b278c46beec290c5b2226de03990b0b2fa5a32af88d4d845daf30ae712e2ee61cdcf0571edaad26eb2d66f59c5ed40a262d117d4f662cb3cf39cc76050c93523bb8c072609c290df151e171292b52812a19e4ae825928ca56cb603adf074806af2cafc592a87a92448e7d920f2bd66d1fa6c11fe23e5fa6be2b6cc1c1226820aefd292cea991d6070f816243d177b70ff3e19751e7d5730c7d7b56118fb3121c8845a8148461f6f4d113777597eb626a4aef1e2ddd876f0436fe180469ee1652b9c528513da4e0e5926822761dda8826e6aa87461396e665a720ee43660a26621d937d0473f1f388822b57bf9d17ef416e6724d5eb7cb34e4aff1b558174aeead10ef180d0f2ef825a02b0ce25baed192736990e225535e1bba51c88b4d67259ef6d3c024857ba105965171f263e1104f13826d2bdb8b5b4aab30f42c30b394f6a42093cb84118cc74457994f8f3cbe59b4a198a9a7b38dd97b665cfff300753746ae311665067fd3610f980ea38fe3cea940f40b734c1dc52b0164a68a4bc8fcd4cde5ce442abcc71532c81cdd6ad2f0e60ac031806f22df126e815bb25c98f93c508d2a188c109ce2bf755dd67b025d4b5fad1e1dd2fa84003bfa3bc4c8e278235dbd1ccf5d60c44360393cfd2bcc6a53c77576778d21e1d7c1450d7fca8920073ad16ad33ccfe7dbfefd13f0be84fe23d26009b9825e1ace8d7a3f31a51be0aff87b25dc176a18433fb6525390df15d3f8a70ea1c87e9e1fcbd53080758807333bead582c01443223d7f91a5c7f8419dab5ba5e8b8b83ef18c53bd1361dafe6b294696885e449cfa1ed6f52fbcf227634a13e328a6b70207ce54ba6ca23b84555609c60d8a77798b26db2fdbc9241cc0ed3da4284e4294f7e0fe6baca1245195b029b41eb74e4dfa536a34d6fe67b2b70035b4b2fc7097d99cbbe0303bde23e0df6849a07bc0aa1fe7e74e5fc9f9c6da351cb2d2c3ddec55f9786d89b2962daa93c318f2bd4b0046416b99eede14f8b325285c5fbb8574425533792c36098fbaf8272eba0465b14a6d9a29ee2cca2654ade7e690b75868b6ff61080683acd9f8657d6b675344da1e52df7517efa43172d58526dbe758280671cc98288b53047e15cc374781801fdaf1c559da948629198f1cc0b5ba479e4d7cb0069995362436ad1011fe1cf475a228a6a71274160658e809d32de519f13709c7c3ac27a14b21c1c492088163c45c4af7b17bc5e81c605c2a2ed8ee7ead4ca370ccb98302e160b4a3e70e95089130047e090074309be75a09adb5d1ce4315ff5e85c9a7078069d15efb4db6b8e156ae1420af441cc76e7f08c85635cf8a2e00804ee2de37aee109221e29273bce7e084881f0eb9d372c902c0be8b48d6e4addf0ef325cb638ef965cc06af4a9d9f0e122577489eec0350aab2b4173cc4c017abb9ee765f83f06219963288110f07f80a07cf75c1e9e2e699878003f6cd2e044f62c59c8458a6677aeee8fb7aad8382b31ec04b0d1002a082b0796f67ff8cc8ae1a731041f95df9f292659ee9484e77ebc1d5072f6825806d36e3f9c5a441d5c7be3c1c2d17a970297c212cbc810a83a179ed761ea8ee41b93fb655648ce1647753e85464a655272d8367018814a88ff6a40c5daad460bcba3c10453025acdc69a25cb1ae58371b9ec9bfe008ef05ef5ca78cb36cee32bfc8681479f368f1a9c2e623982eb313939ccdbfc3f06641900694862d758ce557c5b9ffbfce6d8e0e749e88d6913b0bcb12b371781ad0db9e48681e881c8c54a77477804a2a6a9abaa00545c9b2063bcb94be1be53e8c682abc47a2dc358097cfb1413fa2e6bf85ab63a4baa38b5d0199e38c155dee99ecc1d9eca63b5dd0e1f486148e59368ccbbdc2310b25a4d7d2a0ebe748b910407c260c602b938dc14f59b8595096bc21ee1e89ef0526380fc861140bd6b1d9dcedc93777175da21edea5a056bff9e20f8291c32d6dbc9044e20b0ea79d39596803baa2b2df4025a67bb13904db3d0902888b2964b3cea39657f4d1d03537ede7ea9104a25afe1222fe191bda536eb4fa67a3b7b0f4441050eeccb008a4d4c8a9a5e8e0a645efc69680184d3b0d86f14ceba2e399f21743d81c95770f04291df2af16323bd337f7b0f89867f00a7e00aec815f75d2685ece3f77555b238c429de84444148012effcaa1e20d18813562c34fb32668d5d3680dc0ce76114ef31a8aef214b7d65f3b563140dcd9272deb463e16440d8a69f67a61dfa7f5872c31eb05f88b9d6fd1668e4bff7fc8e1baec44effb4663df461c4a61db32541ff5d306d8555cbaaf2fc295a54af6f5efbc309dbff920f3dd54406c344b0cc532affe637e5c8d90bd75663517016fd469f26711af617cc321aedc7bd906a6530fe04d39fb403d3e8dd2042fe3ac55e678995f74a7c935e781d0d02e07315ea4a30a59ffdf85d34ef7cc69adee272f30b82e038934b9e552e3867d906ec20e1abec6242980051f0a08c7300f96f7ff9c95be3cee511351b02f405206053580d280b590063374bfe17ffc263699e36c43b1fa9f00c09e6ebf8326574a11111cc331f19fe0fdb9f122b4cc01e1c9b6dd49c141c9d7c6f6ad353f9d783c4bab227c8058d2b40d4ccf3c01de36519f787c1facda9eda60dd5255aec5aa3f079d866226cbdf397442a8fb55ec28e043449e9b5fd4287237a1655cdd6d51ce73e88506d24c3ed886ac1361534b8dd815f6d87dfbfc79669f38b1c5b33c954341cf0935d63291f32a75b30389a88ab118bf814223b589dac7709bfc3009f5a5bf0ab11ce867bc5a93e049a9014b90d8a1bcbb3d85ad5d7ff256cbb0fc97b28cb7bbefaf0130c2df7db8199af80ec3b6e05d8a1aa73866335071f0a7e6f6f155c5518fd058878344c924360ee6d71a085bcf37ef9b4b66968269664f26c5e3b9810d1e66e90bc569f1fc755abec8554cef0774ee0f82fa66921b8c6d73ea7fa58cd137688f7f9a7ea73e45ea751523e4c99a21596dac181b672820d7cf454c9af166bf46e230c14c4b2b558eea6d33043b1bb905611ade241904e8bb0f89fea8b53e93d1bbffced13eb98936cddc3a07447e8c5bf5d6534b59be124cf9e5af6c696c9b268b1c54b977615a40c910f11b0d4b8b23140f1ffb5c63b1cebd459570d834e2e634a682201d8408cd447f1d12fb4dba39e994aea67f7b6486c0d3320843ebd9f4af0d41475a4da4bd8d748fb6789b3be1552c19058e7f733811357faa24f539eb88dd37081442e369ffb0d1b6a1ec15d043aee92b444de9089088a8d37263ba778edcc4ddf87bd6edb548ce74977b454b8e7c84315ad42e94c35cebe97e8538a07c2802294650b396c7e0f5377716ced899032bc44c4dfd372ec6c02cfc33477817fe29aeb66537f1fe5452530ab11b53ed427faa429fb31cf026e904dca212701e98ea658f55eac5f6ffd9e9fcdc756eae7f152b276a964f3068b4b2aebff20f8049998305cecafc045a4314c91895bf82773062973f909c467e63ac5aad25dd6925cbb2a0635be4b8d44edf678534baea76aee2fd47d1bf53bc216bedc8e866868fd6b0b82f367c61f571b45317f4a93f7b51761257f65d93bfc199f9761645c7b070a62be7afd6af74c493ffb5d1f7ab861c372f33692a16210e76decc74b0604ec0017cde0aecca1a80071a6ed79290e7c38b98b6c2bc4b740a9164203d59d66d3cbddbca9826d9255b693a2319ce2003bd8ca797acea13f7afa409d868f612061e40b8877c7c222f81e57dc961a1c646583a232cf6ec621fd4d0e60e53c7ad38e6b7e7ba2bea97d99d389840690449dfa9b8a9b2559ae296820f72309343a8b39665b8d66a752914890ea267925087cf01ea57000764b73271dbc9c41ba5b066cf26923f5fc7ffce6135f466dfb5426362f3863d7c49ff907a03a48fee88671b31fa412a4444bc79a8913bdb12c74359f72e5dfabc1342146062d180b2d8e4b286b1ac49fd481d5fe77f1ed87318803d5e7e0cd6cefe52ae2504d6f58e0540647e15a85971be062770369ef493ecf3fbadb1287e27f3427b8e88caf7d4de11009f26b0a01f54b07f21fe491a49e0162c48bb85f932755328504bc8b0082c44054389d2dfeaa9a0b905de0e79df03d1123b756e88c90df198a5e6036fc41b052f730828ea7d0f8a7fb4856a3040435bece412b664e3315c92ddd0380fa5a30f90c5d0f60e633871c46d832b8d0474eb6efa9d30b7fc2d7eed8a24980371486ec0a0f09d77bd27287d7b18d9c903e4a14b0a5ad36c6eb0b74a173a5d8bbe29946d05aa275a8c0ece6601752a604745fcb307de8127c7d9c66bf1b0b4ee0331aff95b549633093893b18e290448e6b5b83f16a6c70b6c8c4ee018b4defa2ef31a11ad6baa4651f6d5f2530d0974cc9cd808161e695da407e57bdc8fb309dd89bf93584642e40bfe4170e436cc9449bb06244556a57510102e6a99fd6584da5af7f860917d9c987188520a7d4193707de09a82f3ce63fe3ce36402790bffeff4643ba27365670d9787b52d80346aa411eb82c7cfeb0df272fd049ef7c9f3598d08c3bb0b2818f82dcb7c64678da8fe801f447f4b740fea4e616668dafa114ad964f544e082fc67fd00339e82b1e890197c1bbeecd0ae2884c9cf4f27fdc13c722c1521b39a93677d98c86c9a2ebe0c0095bfd661627c9dccda49c210dc09deeac3f578f4d0b2711f518239adb6651061cc8059ac50fe4239824d494451a45061debb12b1ea78d883daccdb747cbdde8573cf9777d76bfd149fd54db874a57072f2d7b4b53580eeabb9c79607d8d56c61c06bf5493ebc37cd8550a978750bb2fd09755947b46d81a757097a908cbdada9b0fad2d078a8ecfc5fdd78b53cfa8f149c1aaeec16928437f3123b2f46359a60df83b5f3cbb6df66c161dde09ace6c25b0f1b3e65570340cf33aa164b02b66a77f28aba9ebcc4784a744c838cc00ae020d78acbc01380a5bccfeb28cb82d67bfd3ef419deb5f0b51d48645dcc4bc22f798bc4ddc5aa8a2b438b609da64e852d4ec2a8812b63ea25693cbfbdffa3554b34deab0ad91ff7393b069db7f64895613426fbfc7276b2f6e29a9dcfc8763a595e061270aad8b6a648779773dd98086d740886e6b187ac5ae2cf64f8ddd201285d73e70bb412588639c65ae73a1d460d8e8f1a995d175b34da1e80130b5b76bad7140442e330da5e775d44c67caef2cce795ca2432cd7db45d0f3bf846913a89208b6141d16241d4009408525875188271a1000b07a6a1c35eec66c03692f8f257389f31b6ca20dff7c7eddb9eed7322cc2c59b0449ba22bdd7afd5d0139c470039c5354b21168f469e76281b41927e5cfc034cd239423a6e99000dc850ab07ec85e445da79a9a777b15dbbac0b627cc59ee9da56513c7503a2404d70161198b3ab462146094a0d70b47a47cbcdb29c59198418cc632236ed489e3996e0a7822493ce144480413159b0982424db41483cd7ac2c0dc3c3046f2c3c761a57a4b4b0cafa3b41e7571f173959a3542afb40bf38e13cb4a8e4ea00e98eafaf8a0c6e3e4719f44f4318b0f8afb6e419f76c9722830ca337f3eeb7406e63937e3ffb64ec9138fc3a9ac57ea8ecdc536aa9b2b79974c86380882d8354ee78844166e999b97138da8a353b6fde94a91d0878ec3b299d0ea79e4c829e8f5cbb8562afb6de69a4c9ae8251b7ec8b36d23b921976d09c23ecb52cd49bc6e81b35801c56735084e91c458a0956a5c01735c7284602f65e528c2123fa179b02241e347ae367d65f09dec922ea47b2beb9df73ba768bd39f1b2c56f23b89a2d25af4ca7d250984ff9c8b14f8ace7ffbb191e34e5a2ad5406d47fbf993e6380e99ccf2d0d0a9c586d5e8dbe7f7f667f8674f1380d6e87a600b4430b1fe0912d2fd469d79622caf24a38cbd157b63e9c2e60c9b5d9ceebd604f08e4ba196aa0e792d3ef00ab10ff048598eb6f14c9c36be81b12b128cb1e5d99ec141121e3f62102b45cdb8aaf2c2fa34f0f7d36dbe6f77af78745d02645968746a8d4b35392b3d24ded9f429ac5b05d95bbdd1ee54030e5886b608af03ddb43a40072597d94b16b645b6e95a0fb50c2a71a98be71559a9d04425c8a0de18c0e5babc2241964d943588c6614fee57d424e8bd51e6452470b26655100eff0f5ca0d45c788569fbf098427a2c39d609d1574c5f3c2261b2b96d6f18e0b5b6c7fd486603ad3da81c7f1554d45acd1f5605fbcc31e585b52558471d7a37c4d84dab2bd01514e46a2fe55f8693cde168cb28c03b362c74b2a4dfbf139a6ec665f22abf39a3dd78dbf4a4657f6883a5e460d847ea4fc752517caf70ee232b99a973d9a1ecb263d0cb53eee901b2bc96be541348b9f078b175197b14488c989705b2049ccb749031b1e3d03dd6062bd075b7a8b53c83ad151cf22ae6e845db99af41c32cf42d0ec575d4eb882c5d21b2e08dd0bfbcf374a7712892d53b73e671d8f186bcf399aa15f48b7d342362973d011954dfa5401176bb758d725d5a0dbc7571b669abfb5240fe6714fc72dd966bc547a9cc17c1d11762d954d52a814aef11e83878820175b2dcee2bd7f836986d63c4613e5fe5acdebe973876f57b82901fc6183f25cb6dceb579796e8ede2ab0fccc1e04d327aa74bbc9e0c3fde09d96e8e259dd68cc6e7a1213b82aa1bdd48fd08b78e9bee7252426e3378a51c477e901a22470d5835fbd497674e9922cc0bdf06b9886fa5921deb6f0ed578c09d38d32ed03a21f962658c574004195a54cda65203112b01537bb4fe08d96609332daef5770da18068173a2db9d06b9e3e90ad3e99c058e13230562e3caad2d86ff1a9198c2e64966b86979240c577e43a91461a84b12531fd2b330800bf0a6ed26d7f7b7e3e5001f4f2e05fb52b392770925bb3ccafc5089d7c7c8b46885be0ecbd18d9c25615cff2dedc0b411c98b20d820615c8417d7162a71d4c12d8dd0a22d780c5f1457aeb2ab2a0f4d65af57fc9f3baab387150b9322e64a99d793611625b1e8a2f81f66fbe2c9ff48588f91ee93be9d8c8debaef56b9d2b4bcab099aa428577787e1e46a6156e60184705a2c13989704b399f853b9be46401d41093f0533b675a45e65a4773cad87e0448ca14c799f76c749c691796f8b22951cc66c634f57beaadbfc1b6e1a706461097b302da66d1c6368a86c39a495e4633b3ac2f80ffd3e87ea4457cab4fa81780a0d26f9910126090f9cebcdaa1e3c6d8f1c3b223f0b7a1025494a84c7973e29b61b7d2edb1e621b5b18446d09652e95fb3a83ddd4a07d335943607e08980d4556a319d3023d786e1389e1e9791c226246a5c7b11b30488e07b1a1c685cf50b3406e85d4ff4c29443a170f56fa302fbc208deeb3f98026b5af5a4b40ffc1ddc2e35b5b460058c3a08aef28acafc46dddf2fe1801eb59a3ba5465a92fae3e20db5ef0fe2cd84683f68992d7a04621113205c7851a4a6745f634dc8387c8921bc2beb4cf9962b4a5b6bc8de93d48df224da45868e00589c53ab33bf03367b753351bee13b40a7f189963e1cbc867602133a9836a4625405ce1f3212c56986ba1041710cd7c36e141f4a838d3d967dbc156c0cf7868b653f7f8f3c8825becb6f25129baa81d080d82f0dabd644940ae15166b8f7b5c7e57e310397b251e62fa23691f8b47856f43e7bfe1a129ddea0b933a5ae708ab51badb64fe86358f290d99ee97d37bcb2312ba05cde5a6a11117b4c943492ed9eaf2231f669186bedac8c71a4f7063a4335089bab7de9e15face9c6dc9d1544a07036b718d321f1b7ecc616745b65f11ec1fb9469ec63b233823306453e56a3070154081a74e63075987515021dd814ed1180dff7cc2f7846f70f7bf08528bedbe34cee613acaa7f24e89a4d33a029e79f8b9b28ef385e53380489c9b86a2d3262f87d23a980803245fc6293ab665d22426989d868768de7ef8f8700f3a1756203606306e631d56ee3ee2938da779a0401f59aa15d9ed1ae367d5d768f265f754f8d8d337c17348289a0c7226e2b10f92b8edaa1690f0f45e8ded66a85dc9a75137719ffddb1b7cbd30c2752c0a71172df64c3fb0e4a5d5c3f627cc27934ac12f9b3ba352136408a0092be9319cc2f723675237d0ccbd6e77d56d9aad899edfe8f55efb03aee5a70f2e949e7d758f151a0b8b76e174f5577565bdaa32f05b185ea1e311d6b596a6976f3d8354fc613c4fe52c6fb07ede3e7e2662da93cd1b3654e477991e6bbf837ba4b38ebe6d0955595d7ee571b497fb9bf4fb6f1f19815644aea320d8cb46e3540b224c110bb2eefb0dc6c4f88e12651e8538fa4e0be36f58800c90a2a742d8f82f3b88b813e65df72f93bc54aa66c58d7167b90d0cedba039f683fbcdcf49055b487e90d2809235afe51005f45eba294d0e7614cf345be6bd9de34c643aec53fcaebe3a3c1588bc6e3fe5001f61857ee5257a6df06823857f9faa672dec2118baf98ff0d2d9dc6183c585822b32d404f20a07bbde916900a3af5e2426e7756b6c832a5fb72d2c2e85139883a5c25f3ad81d4de361f640e1b6e7c527e7e985c4a99ff1e1ee0f769a754290bf618eb9db524aa2c4bd5b13bdd2a18bbcbffee871f453cfa35e3aff053af8f9a619cade691abe05666f60e7c1610303bd92b960cd21f1e102283a852ffadcca8bad0e6b4483299d44a08cf246d9211a2923702a7b8e370607c3e457c200b7f64664dafcf60103c3c87503ff5ac6126849337554949a19764be13c75dd26ef9afcb9d475c48dea387950413506f084e333a831c130afa41fa75c5ebaae467c8610b2683b662176fc31b78131f1c41f536a3859915671f0e2014d3f4e4f7cacb845c53c2075256600c54fd86f47ffe9e8f379f5719e928e07459f66d3b78032e3b31814336d8b28fbec2a92f2bfce1dd9ed7a0ef67266327faba0d88ba56705ca87585a931035536a3e7e05508201f07967f6668b1ecacf8c65d0700a10cde0d00b3b04438f9bba8eb3fd0b87d90f9022b372749ef4300d05809c8ea2d92fe6aeb015ffe2cdd1a9ddbda9c29e1d36eb7ce3774871938397e1700f2c0ba1183ae2e16f2afb121771cdd27853e44f04b10a4ca01456a38b4921069982e8b733367985cee0191dc748b495207d5903b6d0cb8844977b1c6c436b8c2ceced732a6cb46c27d453a15c771654c2cd078e0ce9e344bf9cf77b5fa5622d70e8ae10ee6eb941b808aa5212bd59f48db5d84d35367081fdffab3f32acbc936eecf74d98febb0f8073e0057873d65e7c9115c2c56b45d218a7a98452fceda75ebea9e0d2fa1b2fe069702d72b94683b9b6d2194bb3223a173fae02fd0bb381df90761c6ba4276be6327863767cd97f45b8315d0ebfb9932ba68ca1bab2edbe83ec436a1ea5b8f5cd169742812bf9ba5f1aae6866768657b10210e387d97bd25c7c23f8e953a2f2c1b71e3890fe65a9a6a4362b4ba9f83118a5d6782a4fb74c1915d7e72310ed435332b2b448443633466c425554e03ae1fc51ba28177a9a917860c6b3498141a5b9f32be5f4781b9a84cbd3b23761f6074557bb5da21fc4a420ef83359cd877843f68f87b87e9ab946b62a5435f33ce7b9c53c57745420fade41e94c85ee00c12509c35df3f7075a8e42ea9370ecacddcd85399832aa993e3558e8bdd13a8c5c943584e209fcf724a60e8465ff288e919ad2b29c5aa0d20adf07eeefd2072a3660d771dfd02f99f0f4120ee3d9e0a7a7f5187c57c28c2990286d97f920bb7435d975ec0c78529b5f2d4a475c25aec5ebc6e32b663d243bb9779c67dcad01cf67f7a630d1af349c218f248a2f46c2d43d5487009f45ebc319dc5b7f9d69055c23bf685130368e6261804c33d35a91f934de79ed0efdc3f0607d462d805347381c0301038b5293f7b192d6809a0eb62ab595fdd9405d76dfeace79b88b7bab610eebfbbcea88e5cc69009a04f7bd536aa2cf3ff800f0cad7b0c525e40366829532faa1aa7872cdab096b7432a427fa6a2e00c306c3fab73b5c05a4d2ac0292f8f2ae4e7ab73d26131b93ba685e261b4a935f0599da2579c8e9101015433b5d3571dc2dc469fe31c6bec265d9056dc693c807644d243a029e51de99ef409f6e98c590cde15259987220a3a01fb91fb3278443580a5cd60bc81d5aa4944782fc5ee72a82a0fbfbbe58707f62b2e9c508cb7f5b15ac1bdcceb49773fcf73d0e21c5149023499bf42092221bc9651987d90c8a6b9868a986ef40aeccae727b5dc8ee2479230d75e1e7fa546c5217eb63695ccf04ea10f6bbe68fb953d9807c4940db7762c33a737d418a8f3dcee839f5742f4d293a9e7aa697a541477ce2925bd0a36737b6c9d38d62a4633aebecbd282fbe807f675b495d90f502cad1ca4c4e642f049c698cecb492708d7f69dab4942b993c984b2ff2743c32ceedf7716201857bc9da206444fb16ab2568d9192676e995acb19aa97d607b06fcc496fb827722f8088a04c85efbd2858bbca77f40961ff020b91ff3624b3d6a2d68793938f7780a6a53b7a5cbcf3840fa0b3b7a8bd1662ab07df49d9b7fe6b6384fe329c98fb719405c0d0092a2cc8bbc294195e10e8ec5497daf0f96a6e27cb7a306212ad98e7d75735de45aa204663ab6b276c010de0b3325eab0092427f659d47265ad425dc378e2c8ae690b183604db1eb7a6ccf0b2604ec3a337f13b5f66bd81027cba4a19e5daef98ba4c7658e843d39a078351651daba0dfb4e473e1e77f1dc8f44456e9a7bf84ec0e770345d8ff149ef66263fe9cbe7aa938e246f1b8e203ee920a5ef7e4324c0e56854cfb384a2eea0d8b70c99155aff8c61bb6fa6a2cb5bc1a008cfee1e5f4c83b533c68d8289f2569623d740574595c9648fcff70dc516fe3c96a717d77b5ada72ca123104b11f00c807be451d14e568b83128b383fde320708f6288637c212ef4d41ae97de64a7d4e2ae23ebbe990d73cbb566e0dbf3338636f45e15aeb5f09eb842504f808f4fc796a1f6bb094041a1cce2c34bc273ea6506520e6dcc1b6e39d79bde006f65bde1c42ccc1ce5b8fa29d77e7a0605fb52c545000610dba410d718f8822bdf21b593c7d51b4d2b4462670eeac7334e8a0cc7edf95f12a64d55143e41fc39ef12bbc7111998b378bd5b7bb96ba797828a0a0de1f64263e351e84ca1d9f1867eae85ad396e733f2e50d9b64aad7ddb30a3a8f8b4f0bffe9ee41f12e18af1325efe80648cafe7ddbd9cb93bc2ea4c778d3336e0141ef6470a64d662192dcebc89c607e2ced2c2589fe09184667feb2ecf7945af1d7275b4e201e311d91e688da1a531bf9b833b5e2d779287fa80d309cfa5cbf6f1eca6e625f2dae358ca9d0c647d0ae18c23b64c8f6ff37741df4126471665e4e1cf57d4c8689b64ba5dc4fbd772070f2a033321d82cf4fb312087799533cf0e45f6ba8aa52e3be548c72f9f0e836fafde8abc551c65a1481e1c65845ac3af98fb815a934fb55265a12c94a171edb7a6f8306d6835b23bb8829cb123ffd512e7ab10e36cabbf0f753e50f67e210ddac10e2b67ebb571a705058c64fe90190b7fe8d73cb66867a5ccb41f814a76876c16225377f0cf10fbb0e99d354b012a1cf8b27dde3a9c6f7af75f5d32cfb6df93468e13d42383936c1d166081584d9c74445bee41026d62173c9b007cd77e863bbb277bb4fe3011d682110d0f83b5d59640acecdf58a232d5f3451c3eb7bd9c3c9a470371ff586258d08e23f4d52a372b47e7fab2c9fddd25009ef61c2c3c91394cd1f05d8594cb1434a94ba74024f0dde6305a69c440b41633ba64fdce40b7c1116bd52323b00adce6143540009bccfe1a5cfb790e88655306766fe34455d33403734034238834381e682d0d36d842a54fc2d3a00f5a6a7ff0d7a6c5b6c44c839eb667d214ce69eab4bc0ba9f7ce2fe5538972438e3da07d873742b5d6c7486e5e3a0c538762d5280fb37e1d801e5ddd5f2150fa1e21d5f2ac67348d5ef9d29f0ba6ab8e094ef04fafc12541bdf37feced7a890544f70eadce819ecb1f4af7a0f2808398f380b5a3abec97616281560e84fc3de624b4a6346add0cb53aa00c3d78f2cd4136195d474bc576d8f5709a774c1681817c6b683a8658efeef38768834754bda85cb09e47598812f3d412dfa86cb54727f15fece67c53266c30555f0a8840a763e4c5f5834744ffd4085db68d74b4e96880920024a415555d01e028b85dda37ab1dbdf7d7717353d8734b263a8a8a1e0f779c03a0db9fe0a26b6bc17b40e5e7009feccff77f22240d20468fac4b85b203f9dfe8e5512250f83952ece37f46c3b2d1fc7f24d2acdd1830e82449631eeb9847852493e757c51737933379e39dc341e7ec1907d6de791b495d9ab1344bd6d942529e7f159b2fa6d33681ffbb1a52a7e5c94c13700d804c5a217b435ca55cf94f1a73f0e8e0b105b5f968c509501a0fc42fbea5b70882284dc64fd1c3932b204458a4657e0902183bea77ac866a08c350517d715c1f7c602fe6038eea91663032dd09e45b32f768ffb59117c8935586f70e876a27a7e32ba9df76e605c75114ee55a1b739af343b310790910d10dce7b9f9ff52d0b5edd15b1c2e850afb78cbe48a3d05ff46a6e3b2b28d7b542f6e45ec8019b29ef8ae7aa02e3c801c4839be52b8fc2d13de9de094f6e1bf32ad2c895e9324fa781dbdf5188f1595c91376cc4b66399cf203b873de30a35b7be733dd74a1a652ca344e61e555b28d213d2cf831bd0431df8a4da564877d1608094311ce5936c2e8f8fa5f4c6795fc2f37efaf366c7290798a9aa660b0f18cce311b78bbf2b27c2d2169d7a92161a7a88d9a563fe30aec46a4966f2346b416b7fb19d0fed64f150040de2f60fdb0ebada839418d3803c42e358f1acd3b9a3ca7ee50c3c7f8b3bfb80fb9bcbcf49e47e326efc9b12aa8673319ed047d0d290df8ccd37e81d5a60214b63130a47ab54aeca2bd75245ce4d79b089fe93cbbd3fed912ff8c388b0bd6b0b49f1560aec86c43f2a536d382e5c31ab3ac6ed09edb419931ee0546614df94b7fa07226ca599ee460f372a0d68d99a2ef7417fd9b19927ed9c21493f4cfd807dc1e5dc012cef9832082137858b6545e4bcbf68c934666e331eafda384c9c847e5ec10f5957a1a2908c9079a4b4d90e714f3eb26e38224540e8d633d3f0e8f05f031dc6569ac8e85dac2edc6c26eaf90dbed72e5d7055c126573b73ca3b4c0f95bc1cd4a9f160c74211b46c95c4f38b2b554252b16f3398fd149a35d0bde002a5b46008875be9ffc83db2340286d7859b480687ecb4392beaf00998d2fafc9ec1dba3c41628f8a250fbd8a3d858cc512a507cd1c582dac644c4dc68cd17aded563ef6cf7cd8169c1e946ad62566c30e3c57755931e86d948f667cf5c9bf9114d2483dfa2beebae01dc42aa94d85c27f59eed8831ba48ce86c34e02852904c31c7b31fe7e9d143c0f9c76e946ad1bfcb950170e644de4e32bec31ade369e49bd92d338cb0c7c486fa887bcb669950ee7b5cc4f5c738e5cb7c2f881ea4919e2ab14243e533273cb2186f80b10c88c3efe277641ddc66231ef4fe653409cc000f9d4a9a0af0eb32006ab99a8288d22e21b7ffbbda72ed83ce1da1b3ca8ded3c2710241f61dc567d6d2cbb3c1653da1a3692cdbbcc626b9bd15c9bf874e0441fe29e9c769e56695874a8f47b8db0813a345a41fe851efebb9b2907dff36af48a956a9ca2f69dfe12ff19195f09597afc48697faf4c7e22652f5c4b75639b27b428b6484476e4a07b6608886e4524edfcaa5f864168d6acc2c14b98c3b922d2ebbe8474ddf9c102789c759864fe093f15a4c7905a488c52842b4fd6fa1c14b6a8719788a6c60f168c1260a9f52e2528fff4afd5889e55bb20c3a4edfc7bf738da42eb019b6c3ae4d95f1f2d1654e97f351d507ab20307382efa88332765a1e9d422aded9821981c8596c3f261e2d77b5dd0088eb61442b8e9793c876bd6e125ce15bba41ffcdda672d342cc93bc1f76e4a98ffe014a0ed82996ebae17694333cea341d4ed4f84c90c138c7f98e4df5126c4839c94743e54ac3b34f8330af9669bd3c5825aa13110cedc7c628b11382c88ab89a1924005827f3a98a68191d7686e19fe66e8f3f4597d80c73fbc1f5b20ffae9f8e5dd22f8337722c1dfc6f1900bc99cd3788e41fecac1a2f9a95d67ba81cc4aa987ba335c4c2d4868b12152769e0dbb0920d96894fe97a13fe82bafbdb5300c62c82055161d9ee6970188f5d3415ad080e35757440805e36b53f625bc1dce5e129a1250f0d6aba0c0c152246ef9effe47567462017323b48948714e043a776f6abbc44af9ca08fd3ddcd0e6919c50f03cf29a92292098872953335a8f9f1d9d40a5cda4349b59d1bd97dc78b82d6ded47c1bc793ecb2cae9070df4fdfb1eba514971c639da18be7a4fb1be44849fbffdf8802f3800bff481e811641fd9ba336f754cd4f8a482434c7be97394220989f68d7e61d1826321833f47375e19370dde349c155f8f001fe7299bf50231e8489e60ba9a6f2293eec9274b097ecfdc86d338862619e0385abf55b88d706933c3b147ba52eff4ecf7474a3bd29ec9bcd31d60416e9e737a1d5c1b3b99886cd95954c950bcce6512f81bf5f6f594dc2d22288385b0af44240f19cf08b886d2f4d1c8cf7c21adc35450bba845a6583fcadb5563bbea185c8ee9979622baf5ac82ceacd994bf2a2e2a4ecbcd837b60c84d0c0c0496c2166392d0ffccd90b2fe8026b1f0357eab1ae42cae13bf77ca6ff82bccd2e52c455960c6a17ff520ea689277f7d89cd2adc8984eed2608925e9f913f600f25178bdd868d43248f8d648a9f17dbcb4a5e0cb06367a3459c6e70d2089fbec6dd34fc4f499b67e55473ee6730b1e0f2d2d8da9dd845b137c8e252e2d7733540e1f3f51f6d0c68e74a0504e32ce0e6076e80fcc406118d072d2aa99458679db0a75b07bf6b8499e23c65c645d098ee5aa672a379a2dc80259b2f7a09591a6f3035495db309d7ad61eec9e78c9f9775ad9cb322405c2578385657578693f9ca51f86d9a5fc8c817ca2b92f24ddef212f98422575b0cce1702a6d71a486eed4589f1a1c8104ddf4c16f5d111038d71574545ea6c964e62d2fe6467bf6923d8a25b0aca135e2b3aa4c54b453af80e2231951be0909b9dee5c821fe3334b416769661097d9a9dabee835f914e4258c41d96e9d1e0e8912a960b310fec54864266ab44f22dd3ad788408b819291b81b2c32bbf8ad6a9f4f151fa7adc19a780fd843054ec15da190555b4ef834f861167d205fb476ba70523985f649261e154412e013f58be577bf3a7b5ec8f8fc14a7227e7c8f4b4883a605f7f86267d2c283226214773f99c7d7633a35dd680ff6da3187e939d9897baada64ba25b050dcb8c9c68c0b3c5e1c0017711046ae9cc8866f7b2386559908578c5c0bc3d27bbd5517f6bbf1b2ecc024547391ccdc3f7e03047dc4d0b923dc5b650671dfcc986d02bd9c11cbefaeb23d7f3eba01a681f9c1b98cba703958d7022c4f4c3ff420b824a1e5b6b33c2bb860a68c27741d0fb7472becd6020c75496f615e85dc65595b6a4bb533f871879a98990cb958a3d69fbb273eb1b38f521e43a10ee19d65ab86d1600f629c4ffff0c6b56828ae7eed936c4276be6404c0e3d26d1243902ae96fa44265925bee4d64f8aff4795620f7706d02b9074b9d147560c25da059dc7906de1723aafdb2989950f6b3c5d6132dc979c0ef2f72c4958d06a9839e6670bd36f829dbbc28b5d963efff3b45e851056b615424deec4d4f39ca8da9c469dcbba8646176cb3ab32a9bb561560177b672419bab529ded43ad209852900cca7e3db269cc194f845ac2ac5c56f4331f6fa3213800dc88024f51862ce6199d2f4de813a047afedb8a799e175cc4614d7e93872bbbd8154f83d8fe493d1571c6559416e27191d527eb50031493236503cc0b255d2efcf7e4065584067812dd327da2849bd84799203a16071fbbcc2b2f59947ba7b6445d65ad0bac5dd39dc4bd28d8811ff79a29dc225224280f0d835118a68101001a80d7e859799969c72086c49537378325e3bf44bb2b98ddec69d6ae1da8d2667b94a9cbb7bd98ebb74795a2df1a9934ec0f8667796bab5f82a52a1a9ea95b44a77271fb0e60d86a3fff060805c449a0cfec99d6874cd798ee14da4fa8d3bf4431ce240b46874db8761b5c3c7f456cc90b979330f848f4efa1b632391619dbd5152187cfdeb53a193a145036c0664bac01c6cacec67fd8edb7bf6d0e19651cd95ccd060267e04caa6073d900fd7ea81d77b709036d0cb4137fa21b49c03e5614f69729136d0fb14bbd7557e75df91bd33045e2f7b279846135e49ebb61590b5842447f35531a076ebb958329572a0750370e27b3261f0052fe4967ec2ca89bc169fe746b4b6adf71de22cb59eecdc42c69d0a577aa88e14051c8c3828b4a9f28a9d9acdf58b63c7ecff6469a125e7d40f4fb0af429904df7a0345a46bc20621a196ebbaa1be75d884c9a0c0e9414f3d24fc1f1d14a170bdd7c5f5549358a2699bad25a2382e9fb681c94b3809681c47e0f9dd930d84824760d74e96a4471352a543c72f4edd4b8996bf5965a67e7791fabb68bec715e0d97d5401657370f28ae9d921f035bae51df7664d988a074afd7728ec699e2ba103ac1f29b4eb507aeeb19494208ac9fc841032e03d55f6dd1c9bee3e57444552e293772cee566f9bf7d1f53b4f8a8aeae0ca9152b00d1ca00d61c97c954bd6863dff15a810292389d82af1bf6d1661c7fc1a359771181037207dd0d6212b59a6c637c56638103bdc2656785823bcc10fbf24fdced00c7bed458f360fd9835780ca4efe24bee1cca1aa00f997bfbc2733aa9adc53d60cd34de47721e6f5a9f02ef930fc5d55103d72fbb66ce92937b2f6c9b286260f82f2117d8da2de62ab84d74940a6677fbb0091074640afcf8ad6aeba2428aa30215f330774e1dc78c11021588e586018ab35d7c3cf537a9a820034ef81d5f62156527970621b8dc76adeac3f161ff14d43bbf6777baf3d4abe622606d7e299626da8388a18487dbfa1b9ac79602979339097844122418a6267c8d352edf96325566a3789280dc77071fe9b3706f3bccafef32ca5cc88ead90f49f9016e67cc86be0b634a05ffcb6122811cea67d2861ca47e4110d9d6dc8681ec89c42650f728fec972f38d95ad95c619c29c8f401d255e627349c54b09dab3125b167c2d939f3f78758412c756fd25c8bad03a193f44f03c62e0316c77c2c426789001fac975ea2cfd5ae4b67f62e44f7089d312ceb2fdfd8b95d7b52025c9c3932a6b8931b5b9755ec3faadd65675ce658d9fc74553ce1e3a350b8bd9ecf6830f912ce3e617d24a354b32960a0d46c69538324ed7788851d4f26ca8f6c003f775c3b6ec4722c4959bb241d6112e76060e9794d88d6f39753068dacde1d3e5e18d9c3cde180493f20651def122dd334b86d715da3ff856a598fc00640dfb0776f34baac5393acfbdcd342eb28962b75847a681614513b16f5ff1be80029b5d9e0d9cce3672f7024e6d3b3eb960845c55c93e53293088b86d7a7c307f79cdc5448243227951c3f8a9c1c39b57313b3a4c19601c951e8ddabd216050de201c3401b9de896485cd51c5fc2ca970c278be74ab96b27203d80e6d91e42e12dfd3f034bcd3edfa5b047bc33249a391c08bfdfe1f4362c834bfe0e92ab22d2859adde39b331c0fd8e94eb5505e338572c3eb8bafc4aee4f920096b4d8d5b7e6d5e63c9c0bdb793ca6aa541d31cc7c32f43efa68b5b981d1f42c937942ef8f4585493e908e654355b714695d1ff67568d7ee5d014349bfaaba4ae738cef44a72bee82f5144fa6df979ec7b4d03389c6d9328a7aa8817d44cbfcd65aa7285cfafe684ee6738191cbff5e099f0288b8bde34a903e73c5ad4a8040e8fbff009718db1fba5fe8aae6024f6f5424b842db749ca062e5207ebfb7de38d9199d6f66b8984f9663bd2b476b7c02a3da5ce3439a5d63030903111152875d2eb0a8437c76bfda02d84439af33dc8c85d5a36838cc8de83350e73f8a97e4c8b752c6658178e965a3379f33804c9ea7d4d1ea1d8138a09b7bedf11d4c4321cd641d870f9f4adfb233a43b32622b8892ff3fc452ac327b15aa2048c21bdf336b3c002396b51d7b92b599906915f8bcac503d9c6a3a5b67b7575a94da75f81faf9a94af0ef4c2ec49980c0312cacb2d6dc90be8a267d6881ebee8c624a04b2bb4f5cf985330f80478a1af2bcf267fe8827aac60f8ca5a194298f41a7d5d4d8728ea42e112ef4088cc5c21983fbb368fb1266ebff000a959c41d22cbd20a9fe100550b589e44bcb3c85fd1eb5484035a239d43fa5df0b9aa6c28d86e0a7e5cb4f6d17f112071dbdcba5fa595ac123c52484927e3a82dd1cb1aa0acc26511ddd106e0384a19b7a81a502f54f2c3ac8d140a9be0980529e89b46caf32d5e9be034f235febca6330681c4289d5634f743b93061699fbda1ecefb81e9119473e6f46a7db6de13e1484db9a13133ec5735912551befd737c798489682783cd517199001a2f58aa24a09fa3a3ccd1dcb356f92fc173db8fe92e6daead22c95dc7a5e35b1c0b05125e66a274b1f82e6c380012f0e8cc5641831b4fc6484710aef9d5069abf569c3a299f9018dc957f57e9aaac24d7b253fe0ec5289157f4a7daf1361f6d8957363429e513ff49ebb671660cd42668e8931f74950b7bc7a57ef9c7ee8249d721a2aa86a2eebef98c7c4a5e44491f7e718e69b0ed9734ed951bb80091f3565dbd727b14b62f1bdc7c3f71e8eb3bab4dd37232fe8e9c245e799d0cd6520f9ffa25b11433a52aed9b61d652991add42b2046432a93ff94ab69a55791b132ae15045baa1ed651b6fb11ed524f3c61464c07e0b1fdd9a76e8a4d6e41f3284ae91a77e6be50f7dee223e5442c815ca077d1dba62199bb99fa314447fa5c06052b188768167dce7d1bbe3affaf78db454fbda5f7ddd90a9fe68227ba3beb4518acc718fea3d219837611e7f9158485025695e6b9750e4f01a3a0949820c53006a248baa58e770207f4041f070be2903c43852a7f216fa0a74e3da23fee47ec25b5691ec845240dc32845f51e5164f16586164f2e26e7d073594839fb393075cba717000b995f95e7e5b84f54e04e714cd4f1e764e67199cc3450a6d6945869f69e23623dc18330456a37799f7743e491ade1b6a4521ac01894cad8cee8daab2d9634018a374f687219db91f2be96b7215d89bdbef7a0d88201d9c250008c3339d30ed524bb3ba9d897fd481204b7c1adbd3b6e8bd51802936f498120fa7347689580bc1f147feb0a15391aa75de8e6f48830c443d10305b6dc4b166ac86364829c6753447803cbede0f1a03133dcac08dec4235771fdffa4c20c4b374cad6f95a4a19f368fba64fc74dbb66e8cb327dff3c6bb919174cc5a8c7742584133d00d8bc10657f7cf2656a04cdbb1435f91ab2e9b837f7d8f7628483840f4a650ebde121768544856eda120a545c8ec397b5d81bf8744aabb80662fcd48a48d6e4c150ca1aecea212a3107ed5b4348fc8603dddef65d1e76492a2b6301380834df4c38dd5fd440f05080f3ffb731a6264b027cd4cdb208daa7193345629f714dfbc183c8fc43443f03c60a8735535bac870d681cf043cab33d9d55c777f926cb8aee29d34052ce30c6f407f6af4bfa18a9b3d4a47237f5320e91cc172798d35007e6d590529773674067d91febf31c7e473e767ee336fe729aae410fe4c6a4bde0224d0e1a25e602a7e6d617d5f41bc8ec36a24b21000e2e4f5ae68b4e877a64dcaa1850670568a1f7c823d83b635c854dd2759ded76ab0390cfc3be1960ade5deb23235e192424f049e0f91723e9a02cfe7d869ff51078b03a062d180c67d00a8cf092e437f9f53b60e2019fe8e54f51f1127a410fdd7c0ffc76d82733ad8f417dc86f2aac7f658a9dc085a1716a834bbac5f8a464c2987d409f9fcca2e8f2de1ca205ac7e32fedd414fdba2a6f17fa014bc45d4d3bfd3995cd54929b0a6b901a34fad09a796b48602455e28ebcc2031547f7b987ba4965c4a33650dde83635e1403ffce6da01254f4e3d2699e13b9a70c682d6ab10dcb2ba8fb67750c70dcc471c68b6c8cf1727e57d49808598bb09e1b4bd6111b920755ddb1bc1e180f294c7d62de17119ceceebfe3e9a672d2f680cc79805fabd5fa14295dbb9cecb262b491ad879262f799043daa2714aa30f48116f2368d323ae33510ebb9238affc226788b63348d71116fd325d822834bdf877a69971a82ca5eb3498a6104c7df555ac51fb336e02fdef10c8ee9422d71f1abcab5b1c1784f00463dc6faeaa2f2784bb846616a350063b25e46b18deea35d994fa321c1c86916ed6917f621d1ea3837406130b0478e969af58ec659a372476a4a7d8ddfaa13f391a9438cfb1ea8f189c5ffad4a87a37b74696eabf9cb2180be838dab161ca4f6ff11a0425d0173078bc7679f7ab26acaf656913eccb6063eaec4353a295846b2bc86719da9124e91bf6611fa4cf9cd0ecb1f8cc0ead187c1138b0a2cdf177fe4379547da5a0befbd7b3fb1f711256995915b8c8eb9a8958ec161db656d1046d5432e890933c0210d9152a5eab2616f38c88ac1b9bea893c9cf51894f7bc15018989fcb7238eaab13fd61f67162e70d07db631e0f3ac4adcfe9e3f5f0687c64719cdda0b45d054218504ca9606c9422100c3b518d48fc519ba728d858f352bfd39e3a0b6bf566aa4422e37c704abce49c80a418945d80c081df4bd0a851bd93088b8724b45970dc4dc0727b226b0097a1cb6960c2ba3c041d97f308e113e02d508e7b4fc08474af94e3002c4ae5255c72eb5c6f28830e00eb6d276f594dcb701b38d6cf80022a0da4ea5a8cbb939059c7784400f055f3a0a1e3617a9169a6242252ef9d3b6e3177da66f9f8e3145b625d2efa5b6e0a3c0640a66af197e58dd80e5be436502cfd98bda9c5aa4d279515a063350ec3167d09e2fe675910a14ef6af64a349e674ca437c785e0e29aecb83dce4c1ee7d2ea4ae9fff2dedd5a321ca487105061c858afef9ce8ad9485dc5d898ddfaf16cfd1eac8ad90344fedc3b60362feb746283198d699e4161471682d31824114af10cc0025526fecda93e74be335c5ae20f79de1a1dbe4a5cf62a8c78bd3713ed20223efd55ef9b3c83ff5bed072894dd29cc4766dc2807f325bd753a132bbec2b93a7f93ff6176bf94074f5f8b0bc84730ff6b6ef692dfa1cc64082f9defe1f9617918d91f1355a07e68f7b62396cfb646c6fc1895830b19f03cadf549f9bd40ef460e6d68aaf3b433a664db2d81c3a68b1dc6598a69a905ae4fca140ffd723842b35d068d902634e42ce1969ba7a2eb2a83c116f2903f982918261167c3defb6a569596fbd4d7ad6a0c2577660c5f995e59d1b6e1fe17c2d60150af905ef8966fec768619a35a14fa660d5892c7c3b4bbc7e539000a3a784a8d1f103e39221c29ddc671185c6f194d2c4ae82d1046115fbc30d2d3e7ba64e91df5b4320e05475d4f7e370d3568b7a5ea3a98778375295cd993085ebfed5959bf2e7fb1df7470813b1fe505ce0b4260b295a15dafe1f5295786368f327437cd2e2d9e0a4fbd7ae5d63f16e5e235ce90c538a9e738a6618a357ed3f61a3483c7439fbf44192ac4fb0786260e4a7acd48f1fc4d8b944f1f63dd3ad0322cd136d7c9961097d5390307955b907a7c67c7abd71cb439a389d722d0cc8c1e25549a226be9f7b252ee33b0c4566363b3816e6a7040613ab4dc61cc8694c2b408623f184aac192cf7a6124bba7d4451f125c76adb4fa1a71ebca96d131f0c8d9a44ff691566b9d1f2318b3f172eb9964982f6f35a099ed5ca53a315c63c25fb758a55de95b45bee18ca0e33212c62b91a98a8e22ecd999dd7c9b78899d71b981fd496118f32786134f64d1bfcb6317a6fa1d177ba3b2db7794505fec5abcaa5017339e69fceac730535ca61d7a0b8c8663e8e74cb6fb06165d5e0d60a56ed26294fe8edce2e8e98df7b12bef18c00b850a808ddcf38cb43259440a07c9217201beff0aa7cfe5c70517b9184ee644dbb4f4487772bcc23acb75308d6eff39ef8cd58a4dd225f241eaee26fb15315cc617dd571c8b2700497e3f53d4256ae61a6261de794491fb3098977bedbc4fe105b091441dc84e54bef93d81672929083835b9907d73bde80682c4511a967f9e19abbc13118808d006415ee17a10e33c7262ef17f1801f23afe4821adabdf4aa6018f60e7cf65dbb0ea544c9508670e08188e69df383360586188157913f637a901b7a0a272bb0b813e2ca9bcc79d8a2d6e4d3f2aebed4af6096ee3aade8ac54b9e6fb917469a827ed7dbb6da5c73aaa35a376b880786651f645ca710733e8355dabdd6da92c1f6f471e8662914c44bdcc2498cdf882ee19aeda86532f03a702693190c6ac41cca620b2e475741f73e51e5868d7c71a35fa8cdcc412c6b563d425dfa9220a5dee4dbde743c398eb42750a5aac7891315ceeba6bc0754994bc4d314a5ce930cdc4cf2bc1251990bcb1f3d37cafca6d2ef265b83ac38daf005ee3cfec42dea5b3aab406903218466e0a8a9928ac822641e692e23d0da1e5afffdd7704cf9cb2bcfc55522ea6d1cc2e37d25dc8ad4911a85d02f59af0f674d6261c42d88101f3016a6c97882932a9a35cadbedb8f5d12115dbc96d155d6e4def77a5aa161df6361b4f7b3c555756e534485ed136ecb750f02976a94d10e9c4b331dc0ca5755debe1c8fe277065bf01e7b9986a4660b7eb07d38b49f9d3c8c009c8a97f4c5972023caccaba437dd2e16d09cbe2ce3aff8e095e648d9ceac31a77db46158c01cc25d290c20fa7a1b4e3378f432f261d050eaf46d07085b9a8ffdd086902ba73c92b6df0b73a228d905767b7e7d4d8f97f7b17937d50fe060cb2e756f3a4edc8272f3e5ab484d745bf07823a14bd84a92187f70df3059a23f5090ea5a6adc7bdfc27fc5995c7cd6f6d79ec1823fce5527718432ab287c237560739ae60eeea48abb700fc0b9ebf248ea1fab62f3422db6959fb4731e692b689cfc0e25ee17d2c3fcd1bc5d0a145e5c838b03aa22a4f5f7bd70a4c9d0a290ebfff0af4a04dd36d7b803dbb798d25204d50e686aff17a1233ba36517d738e2d0dfaca68194176ae6102fbb38873fb9937d95dd7807661237d18d2825d8174608009830f830fe90d351782bb791e1f7f276faf77f031d75be7a34bd9aae2d0a85b00b41bcb44a91f181172e69fb49eb5be056f0a80ee13c870502cb17d299f3ff46efd7beb2928f491679e46b1447af04d458430a811b2a4297295864502ed60eef0d3a1762f027b675e4eadf620f428e748788e33f98db055160c4c481b65f071f696d269968177ec6a7080acf2b1a6795b9636f7f6b048846db4b600c28212dd901ae243ee9687dd0dfd16dadd613e350fbcac67b11abccf2b77495b66539fd9c9a8c140fc64941dce4d0bdd24f7295091ecf65adf388d3ccce76a94f4618e99fb57110809265911c97292a75a1bc5e57478b6eb4c862da3f56ad83181db9625532e6130a4f21e8cb95bc63e08c58c309db0a1247edd8fca266bb4e02f959902e9f4651b73e663b6193ad5581b8442cd8f34a2d45eb754b62dd78a42315c695bef6f212ed57ad4b351f20d563fc14a8058f83ef7ec98ca99422872e3bfc5cea29bcf5b347a4bc68062a55acfc6f1cb8179a406c00f9890c03880f00344d57ab86839cc21c49614f8904e11c058418e4732e44486ba9a31d8d9d2c218a1ae995547bffe18a49840ae8b97d5b5f98a8c6ccaceaac6aebc78eeec10f3ef142fa3edaf918dae5a62f4f23467aac1ae6237dbee2e396efdf02ab52ef7c9b4377c383b769df9d99ceb4e09dcea0eeb8b12f6811b13565931abe0a0c68e727e7b191de687a5e785e394e88e54d338048acba7c3975503d3dc0887fe21848987cfd894222fa58b4258618b08042e540a50bdeafab87fe87681005a11fbf9886c6f4cb099334c8ce9adf0e96fa2f92a2601e77e6ff6facd5594aead195afd8497eadf7fccb168ee9dd6d5950ea74e63db6d4e384f8fb9b6b0688128e06eac3e5c0428a7ccbf543ea0b92a918963a88216810bb4fadf8d5786cdb2d19a968ee5f3550ab89f651f6fca5ad8ab77570c434b953dd73026096bf50eb43199fa3264a132e971e9745305eee02df91ad5b167dd4c8baed99b6fa9590ac54753b9bd2dee5d340509232f4c2008943f6d34f9097162e92fe067c26c336d87944a458f0c924ae67df4f648ac58297a1971a06801ea479efd538ef851ffee28438ce3aa4d9e001c845e81b61e1c3bb15860633bc37633740184ad925dea87e51bca45772444b864aa2c098220af7aaa7a34d597c447b284701de08dab311ee14df4f08ec811a9b620aa2bde1d181eddcbd5ff06e572bf5d9164d60bf0dac9cd33b0a4b44b94cb657da49955b8ebf3c64fff7726ef213ef8e56d1f2026adfc80a203b3a1232d12bbe5203806ce96760a515d851571936cd54c9a0c4cecec2209d6629a1665e4f1b39e9338a0d7beca4ee182ac06171503fd182daed8bb57e7540b0b062d477d64e9433dddbb0f3c5727c99433c29795178b1d9661946dec63ceb41b8104066d2d5d16d02967e2e3310768f820d36dcbdf83ae99657d786362cf8a21b5d34dd8e9d7e749e72768f9ca01505f49eafaf1d1e199c5fed30b99ed93707c94b8ba4fcff0cd60fdec789045d908072a6b7b2dfe36154c102eaae69923a43eab21f3edb8b51f6e91bca88c7ffa42fc60c9be83eab9d0e85df59f647e0a0aa561eca9959de0326b315547e0db35ee8de0e9ddbf13db12ca58f5c516973669f8cd05fa0903a90d7af8a36afb4cbaa0bb63da64531394c300daf8833a4bd36ee9aa34b3061a4b91bde0de96726c399f10318c666ad9a179f4aa3126ff991ca588cc4c61fa1520697941be44fa7e969645410856889528e2f421da88bf61e0ba263944f34e90626147f420e5be69faca079e27577db92ac88ca600edebae179229dc8eda04153b6eb65f7a1aefd221267eb8f4ea4988f628a7ec02b02b46bf10161a08cc489902bd847acd55c05bef157de83030c7408498460b0d43dfbb26aa30363d176cc4de07b313c8ec1c5235a05dee11d77678d1a8a4f7e41023242540100f7f6a1f4d9e46c8378268967b40a6748d258d566921ec440c4bab008ae69b24da70f421c1e010e6766e2478598b5dfce7b48b527f8f6c8bdbcab298ff24799753f69eea3923b56e4ab834e0b2bcfeb92c57e258c6e9654633b8211f398ebbb79925efdbd3faf23eee82899e6071fe98a6d99f0ad303a101cd62d44410e10420a528100a780aad7560f7a196f805f8df4607fb7084628de867afdd84a4d82af7a931a83bfcc1dce8a464b345b8364c99c0eaecd0bfe9a3bf066e7320239f23badc097be0ec1382508db7b8d38548809998ff305cf88203884a077862c15ccd16d19dcd85e1549e2453719f9333239096cb8c5bb8c2e5a2fd8c5a3b8019c424b757361959ba91e19c5ce6240ce5362f73155e2727ebea216fa40d80e3b58263757ff07d58aa58a0945f5118f09718cdfb193a6b37975a791b0af0e80960b935b104b8d151303c98518e7081da009dd1abcaca83e9615463fd75cbbf03231c8e3f534ebd1d4638ae7132ef764ad82113835d88271d865fafcb635830aac998948cd5aee88cc9dbc96ff2844596084e6e3a05deb077817db4c2b0220284cf57776b30c793e75ec61d4815b1e2a23dc108da3e9d3015323e04846cbaf2e27c6d100357b849a54002cb87f4494eec5df530adfe1f2c39e33ef8304573c2526b8684dfd446353c36bd65b1934e1e03efbd7cb57bcf66c9a58152606bfe7163df7cd17d7211fad739a4c1effacd23314eb9409bc545112b7310d79b9f884088fe106488567d8f9e929d23c06f1308b1a99dbf450f933ebaab92e7a66474ae49fd9b81ac08ff4c9e33f17d65a5d95099a4f5da7bdcc67f7e58304e87f18c7cc9bcda1198a483412548313d2386b52fffbdb6af07e2da9f7611a20e3e8ba3de1e093a685258325c7209e64162176ef81f28fce02b6f2372d2320c1e914b34800a20639903ebd8c5136a0a249b4015caddf50d5f2a06cb1d2b6eedbacd779ef2a1391844b17685b309da27245f36d66674538508ec7565889ac13f394bac762cdea2ebdd6b1bbabf2fc34d5009dd907806548db80246cd0a916cf28c7a9a5744fb99cb780cf828927f0278dbb181dfaf36623938ad740f3652b84afb050af8dbb6c7be28f6861db90c6ecce0c4a3cca6e1a1d49dcd61b82b2e431c10dc0b8958b3d1ce1c6e8d959e0912cfd2b24fd25cddf0070a62fb072de44d393bc5f69091d8c02deb59f0dc1cf01ef119cf75193dd510920220b81d155fddd00b0778dcc2cba79add90429b8325bf30916a96e19169c49d2488f069ffe0b19b0fe0562ccf35de966e78b7b5a8a5324b02f9f5b88a2893315ab8673a65579af327a6e9a889e63ab3e9404678b6a5acf2f9909585affaa393368028bcc0107e2cdf3944aa840f7a70d910b69209035d133b1ee588d0b86fb1715b8ae76f1768632cf1483fb6adf8b1a5a3f1507081bb151890b2e798a8c53ab0810c454fa9b58742a40de3bcf89ef935990fcc7fda5904a719a25340d46034a4b3b6aab1111a318b35916658e19c4e8f57c1e04efcb7fedf47c110e4fe113d57c2d931d7d0e64df18acce9fd246464f8ff3cfc958c6b41929ee22a2970982191a59e033155b39fd4dea3aa5af2f4a5dbdd3cf19b7d4fc2580c0bfdafc2190ec5a9106784804a8c9434e3aafc0351cfcda56859505dd830497c85bb2583ce6b45c08594e9869c3e28f3c3d4d923a7cc2ab949b063b4e73a2767ade5d9bb56e95eb88865cf0557175215e28e1538d8aafa44c1adf9dc69267957604f1c69322db57a50dc4776619c74231b1770919acb27389dc59a2308fa60dfe230b29c9be7677a01688311a7c6d52c5e043f9959fe054c8d9c8f533f666c9fa2388700a8d5f8eaa3f9f182d17abbd11570135a4facf4431bd4851d2939de94305a477a27292e8dddd3e5de9073bd2f20e604cfb18edb0326a471d4515b4c4836bca068d0b6ee2f7e3f69daff8fd5e7ab637e3f7a4dc1ac10925ed60034216dcdffd98492f984afe2267b6ff672d80749d589b5236b7e97b080bee17344afc9806506499e9768c10421d157c22cf9cd1d35ce33959c5109405eb6d88db74cc8b38aa1de1dfffca453f593ecffa9da1184e697a86c6b2f7cae7cb237e8c1bc1be4dd720974d0a81e2250a15906394ef1524e8af938383991e05bb955bc5290168ec5eba261cdb7f960efaf0a20c7093bb7d5a21eeea9ee75e9df28128751f541c991d87c559e3e4d5fd53bf6edea640667bd2d00f1427661c587d87cba52ce321467f5a69b72cbd561cae45ee411a0f2fb1ed84adc066ea9fded70ebc8478ff2e775f255087f2470dfa411ed964b347626b3683cdac2fee623d386c252f37021caec501fd271f06dd4a78fc02dd462b12823d333b19206402a7d43ae6631fbf49edb5f7e08f756e4f5f3abd4311f71afc4d6ff0eaedcbcf6404c5ac42879ad74361387035ebdead663419a8d7e31805cb4e964ac1b85d1ab1f3ca73100500c9a99bcc2f25b9f11efe72cd75896711e7b4b3a9ad816e1c520e6511a9cc267abffea8b65e4efdee8232ad9e6661a0d650f5816915804eb10eb61e1c251b510605b0dd006e8868e059a8fefd93a2ba5e996f31681c966578dbe26c6e4cd7620256f7af79e1c9c8897a58c2df1b9dd00ffd0c8a7f995d1f8f44674b80ee2be66ac0611dc8035d18c487a0187195b042c623511b59efecd27d9c7357e8c62806d5ca934909e800fab1ad5d9bc1d3eee01d65c8654028be5051b18b6a356cdc26278a3e54f5d6979fc7034aedea4204e3940bb48f73f469ab7957d2698fc57232f30a8cb104bbed34f2d9280c3dc572544db5ad579e4c3971cc0dd031f683ffe41d8fc0cb50e5624f7914744783390e98b1386c27da9178e2597da04e8837143f73e0c7ddeb2c9502198e548a7b3868c02313ded70b31250fde70bcf11a3b75521e7073898ef94a07058ef1e2dd69d1ce868da3910af31997941c1df2d146125220a389c5ca8bee6b2673b9e6cd2b44d4a850652fa67cbc574c02c4b7138b84df487512f7742c6215d2e4c2a8e603b7781bcd42d0afa4d302b0a04d52216e0021193030a77464436a16bcdae7a737592f3b79082720b03ba2d16763c3e85f2954c601336714477e555ab2ef6964c2c33da846219f10c0c57df632cdbc469aa2c827f3efba36199d15c2634a85640a697f96001e8fa793b0c5756ba8bfa6114ffffa6291d8d66adf9509fb052d997504d3ca5eee6457a358a911a7485cefc143638fd08c5ee0752e9bf0f0086e7ad5857689410692e7dd77d43edb4694f5c66becb43864c491949940342363176af87348d9430f093703f7a354dc90b0faa4dd5324b500784dfeb3dafa0fd003bab7e46a304f55d0b58967da1370eb929281a0cefe0e3f3971a3ae40fa1b49d3dc1cb082ab9658006b344450d85fe5b0d62813c17eddcca70785b39e3fe184713ed9864e2b98c1e4affc2f5f0c34b881943ed4cf5ab669aace772150a00a180cae3d546c9ee484544a593e331b9bdf6f6247431676595c38976d46a99770442a2bee5a5123551216966269979eb7a234f6d3bc659923453346dffe73c22ea5aaf95bfc8d32c0c7f3c79e5e3af05786bd5053724d6f5c1b89de6fff98170c2c115a20a27c2d6a132ebceab8c0ab3030456098f54034aac2c0741df2d7df363022efe537f0af9bcdb128660bf7ac5aa1b0d53a63a721ac8d4d4d9815faa0285030a388d8c1954771d6f8bf45657cb104e4489c6c45d0a440697f5b4742d7103cd083770482a900fc4f1ce0ed6c33d75408858d290e174adecac0afe668bcd97135bf135fc16fde17f1eba87356a293fc294d0f2192dac84f422f4c798cd502bdb69bade471654f2701693db93489798cc1f2c8e19dc8df650c0c543516f455fc3e4f5559be63716d7d4ed277f88192e5b00ee87282022f50406131046e3c27427588b40943dd1c3c1ee89644d0572ce3fa6ea774c7f054737f5a3a5162158aae23d6cec3341cf97e60d43f0aeb09d21deef65bb61f35d8bd71c366ea0b7bd68b11ff6ee2af3e1b90a9c38ca022143e2ac2d818b664120da4dcb73de98699980cd133875024d90571f19fbb836a313cfd6eab171dcd3ea9391beb2b42ee6ca90b81873b15b8784a241e3c583cebd4bc0598d7da2f973c1a4da085cbe9ce64d7af6a7d7ef2f5b82552f640e6dfa58c9eabc86ab24957bb4c416a66164e7212fa3fb25ec25fc637ff71c5b067367a60dac16e92731faeceaf02b5ded14391b8548ad468a7d7be1730b7ad0741e5caf1332cc813715bc7afa71c9dbd03cb06567ab582cf3b0f450ee5b55aac0941aecfb7ad4772cee6cfb90b6583d6a6f3481eafd2b99b92e07ac636bf2a530d30f045e185620528aaa4003be9b6ffc18ee06a9d73ee01d7c368c1fd181098aeca18be9c4ceaec265d51bc0c1be60bc6fce81c77063d85ea063653879526da101e4980c552405a0b32ef62334d89a5aa555fb850f80cc5ec8124ab500398c1585baa1887ff9d7044a679b9643a11a387c89b7d60bbac960971abb478ed291ba03118784bad5bf6545da2e04b1b807bc0442006ae1807324f98a160a92bb22eb943dab2c3f15e2071090c5dc619fee1f73cfdcca6255c78b0b6b0b9f310e0ba168cca6578fcd6b1b4a48cdd4642015c281ea39f4c985b48365fda08d5e1f72f614c8c690e259b6b60c96ecd9313b0921f28d8c6faf926b4b15ee67e4be8080b4ab1cb8f16041e1cf744ddb4463eaafe1df8a712e2814e3b78c0551ab50f78722b967c81a7d6d2835a9468bfd0e15601cae15a1b3837bcaa3a36ee929c7044e19721b3fb7c31e581a7142ce2ae6ad819fe6dfa9f1e1a9a34c9246d6367c27322b3bdc59c4d8d31d741ef60f96ddd3ac9355291baaf2f2240c83686b91bca55e5527d4a5805866a3e8b194d9d28a0592f5a828eb3480bc4dec873d63719a17f516d57cea9e6edf7d3abb2cc0a0353c14f44f6b35d817cb3df5beeb88d1cbaf5dd678e90f4a10aae60ebcdb4e8030018351acc0c308be53b868db82079f178a3b45ec2344d34bad7e9617718da11a760dbfe667011ae6112b3469f9f23fcca194f4f8a0adbcb1da64905a4049e4ca490e17fafb53df029e67ad29b7a3d9bfd1833b3c1fae58d407466c2b797497e6bc03b3abbd8e6fef1ecac835b44ab47182bad57928ed5fffcf13bbc59670b9dced0935f8a0ccd862cba94e04bc4905e10b048d9ae8d1aeddee0376e59738c759bbf3fc233538ed07fb939de30ff362e28eefa8701289bcb4723d7e502e3b49c83158e63814ab276e41672358484273cd4fe15ea15c222be163858a2b2c39958963ccbd538bbf47c749d60641ae8c0434879fb3414431ceb93d31912ebbe46f894386049c48cfe9ee9c6d8c93e92fdadbdb09b044d5b9bf4899b298c610c8635ddb17e86e162ea32c20bfb175b347be581887b69f31aa167aa38f06f657046bc813588731f5dc294a42fdcbc1331d87befda824f502ca8a71ec72c14598afb3d6db4f90329eaf37501df501fb2dfdb9791e6beff73e89e6c913ec6830b80d5b681aab8b9ec1c81d0d8dd31e20e1fe383a46fd7c15fb9bd191d5d018cefb9be9cd556464269dcb85e1bc802be00a0f84aebc3f25c0711cef4162d693713a46baa7e7f79b8c9b7a775080ced2cba9575971bef5f93d4eea302c41e5f70487befdddfab9018c2dde9de04003dd98e740ff560f4fbc92cd4a0114e11b368c9465160d0dff6f10ca421400e48a6029aa574755bc65ea09a75c859d25b7eacae458f8eaf14dc71227e508313561f0ab4914eb3f9b4863f4c432cee932513315b6392c125e5e5d471a4d5ed96611ad65bacd5d2303288d3e38c88de62ba5fbec95275b7be75016859bf6673d469a145fd2da675775dd10967c139381cf0458a2c0f7ff65e5e7d3ed11c778cb18a48fa780df31d9244ebcf7baec07d7a737310daf82df70e8a659fd678f78d885f8984d6198344a090bc1d6647907a9cd394ec7400642189fabe6acbe89d8cc50486ef52c4b93e79164fd3f691b46f08beaa1122799596a4e7e70b64c7396da41af26591728168ba75bf30110e577e33509fe59a98f3cecdbd5cb00b90deb2560aacc2527c54c00c4c1a73f488b902870db123d1154fd6a32ac841d842a1f97cb8ed1a03c95f7b995d22d9211917a3dec57756dbbd86001991ff7880627fc54d1c7574d56170116f11b295f1420a849231fc1711cf0afed0eebb5ef2fc7c564fabf9f64c45a6450d68d061c84f4dad44c029422b8b88da0303602679dfedf1854b5fe6b5d38ed4fa543f0795c9d5aa8c154d6762a1c55ad15715e49d77956844be8472457708899ffb908325a434aef61e4a032a989c9ba9269f553d4c2709635df00cd3558376f244d3aefdb7cd5b1d0cdf219b60d0ec911fecb6dc1b52810d23ae4d7f2e343a07bd8007fcbd6c733955c9929bfa52d3ac96aad664b8ae4027e8123d7ce225f13464fdf40e2a55af845ebb9ca8853a3255383ce0248f8e0292f42be23df21f37753ef7acbe87845e7d414f028b2f49377932af0fad2b0cbbea7730639ed969b5d6e9139a3c8fabc5af9a91a0e8238de85f1a61858c87df4d7f7df164d4332f66701db0120cd5913994c170a9d535e7f02034abfee5cc1e13de602e79bda62b1b5048bae16b1410614b4290394e2d8cc45427c99bc4e8aacb1107929c739807a1ac1d4d1f17878fcb55a00681c154609184ef4786181e2b9c0630c6a7805853537d905063925049d3fbcaa4e1405d3fef1d75e69c0ff0fd0526ba0818a3a2ddfec9d97a779d10f0224bcaf20b748e71c3ffce3b05f00abc9c05db82d24e7318cfd44891ba99eca141cf87836d8bae90a6c3ad149e59bfcced98918dec4837462f7f3318352701f77f7120112c3a4e3f28f006ac5b90da0e8f8d781337ac32d3bf6ee36054fb17a70cd501047d7aef53ebfef41b38f379de05cb11b658d4a040f3bd0b3df6f5f20d3e3cd8a1db681f388141e5c7c7b97843e8fbcc92e6d8c4c1993199b1f5a4e51cee2ca12f3f8567cfb32a164b958645509117b66251e39f1a95c85d1149c48df4806a2906f4fb3981cfb149be43b3ec04ae6ab8725b28fa80094b227dea195874e17cdab10e3744f62bff42569e86ea73de4b7763a906040c38a11235825a6b152fafb233aee29327f0d008a837e42803590ff19be799293783ba6caf60b47ad785ef131bbb3a468d4a61a7924eb2265c91685e8c03736d7b75216c4ec148b8283b991f3bffcea4ee88b49e3130e7adb974d61938b9bf3192c49c92d60258af6d183ba51d2ca2eff14b53d58fb5bdcc6c6bf9234e815811d092121850ab2b40d3b01fbde6601fc6d3a25a635d7b1f9880d6d2f66c4e3adba2def58e73ab1e10c6c0fd82062cb5e1da6728991bdafbd4628a178e7830b64ca66517c5da3241b9d73c9d66ba3c6407c350ca8deaa08a031986fde26ececed703b7d8bacc2dc0aef05ab91c2fe5320364f431043751ac5c7e13fc20263891c58d3492ecbe477848fe2dbc033dc93d239231a5d1970a77e6b3ea2f9bca39e3a3e142efbc89f56b14f6b9ff238fe085e8e01ed3a13108307fbd0d6fea45008230206eb2a7cf588de698ebb2360997b43b58f5833674355b7ad0602a8f474d10197634580eec12ec874c20507793db6678af4a638cc9dfd998cccd8d33f75f858053e3a6d6545c768516a10b70a14fd5d6e4851e1334f0a6c944b1d0f22213f955862bd5b13b982767c7e7d7444f42560279e85a127174889bf3d8dd12800b0f408b86dbb0cb0ec8365bd672032ad7851308a756bcdb782c6e40d68ba46106940dc54b99bc4c60fcdd5b713cb085b6298b8691dea4bdeb8548b8aa31264a9ca35968a1b3d6004cd34dc1e2ae9d0f6001f85f81cf3fae23ee4a9cdc07b85fa81dcdb31a30baf210df7b3024e819b07f8d355d3a12d8151bc2f3fe18ecb69bcbed16379f7a8e7651d7aa636252527728e55be32aba0dfbde76e700d0c1fbecc49ca25895cd59f9c8fb68646d450ed5d802984141d4a9016894dcf23232a84a2b7df03fef481b4412ee8b45b395da5b0890171cd27ffe5283f5d672e3be9eef72604d30adca2e4fbcd657c532708b89f124889afaf749662827bc72665cbf02945cb62c33e66efe21ff08f2e5e15683e3c70a9a194cb698f0ff7cba340788342c8d609b4c8d3f9df1e80a58be303c34e0b84fa26694b57c8602334118d31f87ad7f864caef4270d316c9c68c61559a6678a337c70439c2a8fbcec4ced7deefd5ba505542a2560137a6190f6e52fe4902b18411e2f294bd18fc6b328f15d6c83a0aa6700f3239f64e12440b6393bef19595d1de637385e019e0c79ce46fff8cccadceca1c47e97f4e10a47e066bc8f7536d91741d9cc119faee31db0d7fee0ac34c7ed9386da72b38173a0046ee2d4d3ca2753b22d0c7b20c9de3075aea895b84f7b35efbb6b4cd416103d112190e89ce14552764164747c61d3b2e492a0111d235583bf74ba401d07dc27e5c757f7ad0e7f0155ee1164f6414c99d40990dbcca8043c09a2db73b0b2683e05c21cc0b653124f7be4faf3c860c2d07fa909ba7402df71144d3f0c949ad1126dbb22a6bb60d46efca1b94e823c5ec958bd300d7200ec2b740348fa82f4d8221645cb1199d71c1ad4fde84c440c4056a0616a238fdf360971b44db68e0045a4d357859f2df20f2ee7fa0b6a900b8d00f0291f63b6393e2ec3827f73d7f470a9d9ff6d07a37276ede2c1405180795082482102d26d33566b3c0df6e9bef308f4c7ac7e0b0d6481ec46103ee734e4f986b50423b669446e73e7051682329a8d0dfb52ce751ced36992ebd4bf1254af5faef52fc1f28e62388f09b3cef27550de5d33b0bfd0519c327f457f77d5a74c7038b572f9fc5ae5c354f6ecee7edf7166f8a945520d19c30b90102359f7380c24f940e3ae9d662c246998d0a6256e5c3f5031f8ce8359df03923bea9ea19982655b1af58a70127e7fbba7e6e352f475889bfdf00bb1b075c10a70555257d8a5d4403f78ae75eefef51109eed7b77332bd2ae03e488da864009f1a9b0f5aae6b460d753243f3ee0895b74be78354023531400ae68dac4e485d052cc5723a49e75caa2a283b3c780c327cc4c818c741eb1cad7789faf5eeb9e06078dda67afc3b384364b21fedad17f19fbd2ea186b19f4deebc110f1c0fcce4434831141707d4c3110ba6aed0d0f81b077f7e91adfc5f77b99c06fdc10000e659882c81fef0c219dd97c63a74bf38c4a97698afeb86ca9898ae5c290ff36032c4c2cbf5e99f76496a5622436d419805d74ba9ddc8cc218bdda1cdc12fd0f62295d5a52d9d2a5f198c9008c5c0903a6414dbfbc2ea43921634cbe6fe667f0dd5cba086775e68af499e8e3d7a7dd2c412081c1c6687e8acc90ea3126ab81f930c8303f29a981d00fb7c3b91f2bad3ef8042b023cc71f3acd12a33b8beabbd22b67dc990b58f164b11df682cf8c513bde2f45ffdea39b09c82ae6a2b13fb599507703756528186b45bfad574502556ed0fd636a326e5effd00820e7a16c58d96937816aa9e358795812c34fa4c59a729c58be8e6986166011e6daa6d185b5db258c8bebd3561f2c4eeca82c6e88e07d5412b1ba1fa94c0c6ba1e6bb799bd7baf6e2b30066394087e39418f21549537b1c20b2dff84c729e76adccbb61e03ef630d6bd29f7954c715cfbe385c23a7890e1e2f4cd03a16116192f4bc2dc4581f6615d81ba9cef6f90513158717cf5df8301bbd0282d8abd270a79dde29a2a9ba036399c37ba202c5043b4942d0bf646d2d8d6fbe47ad212a6e593853928cca472868d16d0a3477e8ed8d4416dafb0c6198456c8363832a3030ffa7be174c0a6da03548c126c0bb2f1c5ce48d3542ad08fc60617c3543edee651d22182c91d14d5fa71b47243bd107e42a162fcf23d384acea303706f68d9c63cfa8153d58094f907c9a1715eb9071d2b6a09bad9d75b6545ef2f59f9994de3a2a2fc715425090b9952b8bcd0780fdf27575c5b29cee208162c64f44b1b09f5954d3cc4755e3519661533efc10932980fa330f94c9a3f9b21855b614d94821d262d1783f63207cad2ee54f15b762451baeedaac5b32e94ef19cfb2c0aae2ab08d594b2124c9d79c886b748cf097dfc403b07096cdbdb4824ab574f4e3e1441eec2ccbfe1d08ed5bde6ee1550b6300c1e417283284c52c9baf3ab558351f068b56909fa286d540d4031a4cbe85fa06e3d9b5ad4164b2ffe3bcb3ea2289296232e037de79570ac466d1f1e45edacd2285c01a69cbc55720df4220540a684248fad3404abd9554855dea85acc178abf7a5570975600b2c48bf16993f9f77b5ff35efb4b8db3fa451f496f3383a204239758ded56a3e6309d66e09427bf3aebb32698cbee41094eec1d7e3c5a6f20189c04b4cbe1c56703ae31f6f9809e981ef7cd524a62a4c76e374344752f4f63b0f1d14c33e62fe07fa437f4e8c7d79d406ffbc8edf10a8b62394dcbac529251dfa42326e45ea134ac906f19d59239f664dc7bdd584ceab1dd9644b438225397b28bd5d3cc8d034729b3aa13c144c5001185c996f7ac7c7c2d493205c36241d616f91984cf5fd81bae87d5874767b70cd1e5753ed9f1286ceeaacf896948abdf3650d6c6c6b6b82e5778b81b7441b1b32fad6c20c56381bc86b58b6c6e5176490a44fe8eb32659fa6e4fca8df4a3ca00eacede7c8d0f57efb4b88c3b6180017ce55bafc30d8f0400f6e14e3b67966fc0dfba9de8395fee1ad8bfaa5e9659f3b5931e469b9138fad5c45311f8e7b9859cb394268e40936e3ab8b209b92b8c616ed93c5fe9bd6f22003f3ed41884af254827f89ef055201ce70847049be2880df96c946297d8f1731e485540b69594f941bbe99cb0c41b1738ddb13e0a8029e41a3fbbf51c990e8e77580f4470828a231b881adfbf41f40a30f93381e6e3801a522fa12a2adc2f0dbc4ae35d36acb5d0117dbe46f14258dd6c614d90f1a18209ab1f4d842f0abc25d11d86839c1bc485c5a7642722f5a45bc0ebff677299d4a1fb161b0d71ddd302018689e1f306e6921b138c0862c69236a83c7fda7721f968ad875647a2efad26a0ed443fc2a78a4c620c9c08e9c834d04967bbedde8cc0bb4963c654348f4d4fab279ef1f596004f2c6aae1ccaea10feef75c381c05d12efbfb8f13c06e4755eae89e35dea6a5cc993c9713659c6d9d9392dcb672d53f2fcd44c8c24e2947a2aa984f9e12abf7914552c0ab812fa932189e0f556aa74778669e3c56441d3f1d6d18a37c9f833a568876621d0764d0599ba3bde11ab616c057c3328702bd7455175c1dd41126c2637449b42fa41eadc454658fca44e153dd8b8884d08f107f6af1eb7ddcde0a7e853dbc10e636d179589937b965335dab09b0ef5c796df4f25d83ae1d9142f1071507916e6df2c299be617a4923fffc84a5bfedab38f94dd31793f941ac96c0da3f99a8390f5495d86be279de95193a5d558a83a6a497e4d9645508b96957467ecc0ae9361cb818f8714e568718aa164d7b527e1014df48b49a45da16cea4a852ba89f7f51b45c6f7a7b282f1d5df8e5085969f5c1bb1b4cb9c0241055195d418021c1441b1f45c08d36ad592b6a270eb6055b0d4d5c59ef7add0e3cc09ba134916485bbcd175d2be8ad8722df1cf58e07579d4cd535bd115c171ee59626134e4d9fb010f3ec42677196c43e9dba1b24dafbf3ba498868294410b098759877d0ce52afb6a0bade1963e8cfb76620507297c513961819123dea8f6c2b0990b10ca05d71465cc363e2958d440e5c0dd76e41c29d842b96a65b597dac79b21bece74cb8d85396f9ba8fc5161bdd786aef8e9fccfaf02132ffe77214390bf389822804934b3e407e4d181ec79d8afd0138a34b8a5839b23ee5de4b25c8de3c17b2d60173ac46100a4380e1df6538537b161e9aea5e06eb7538eee20484ea6969dc30a3d401197defb9b5c1b2df9fdfc2e772232be6e0861c5308f2c77c8bfb357b9192fd873a692c4959c7ef4168a582d4e4ce7502b37c2a0983b145d9fee902bec0fe25fddf2513eab9c761989e5e9ed947a741e34b750f740d8b18c398a5a2457dcacd32288d8c712c00bd1e520600211bc804baaa62f47848c96db17899182d3c38713b5c37dbbec8a068aae8c6bd7f7528eb5bac3e63f96b4fb35dc4343e10cda70ffa71e1de698fa66db36f957f61ec4dbcb57e76a34ed2bfb6e487e9b740612d013a2f62d2efe14325067f9d64f6d98a9d80830fca476a317307c06a5cdbbb7f26c06288a2cd0f4654f43147da84e6d6aea5f3ce702c6209507798923f9e3ef0610ff8fdc378cca64483e09c170b0386a45ebd1a1bf1026d5729ef33dd10de352c79626f7474cf873f914b5b16233c99464c2155e775e00684ed51b413cb85ffe36cac975b41efa1862676c581e339aae25772f14520afb424a632cda6e2b4a1e90d8f532f014f540d8c4c092f38dff015532dacf0ea53ac250f5a7a7a9aede4e89266e1f341a7a396e9687ffd6e07e42966ad8f98316014f01afe267dc13493d5a5e485596a2acde01b2a8a7321ecb0b7b9e56238cce1bc0c99e5fbb03e8ff53f0248383010ac0a2ea991fe34fea53743e2d359760e3957e48294f64293efc80762d7cac3b32f10d90d8a0a704f3776fbaccdd5886a238f45024a40727bd1373ee2a66480bbc1cf8ee8168a671d10557f1729b2dac9d6fd71e91e8ea841ce39a4e01d2fbbc079fe91c3108bec2ae0efca83c81cdbce77d7cc2ca756c8a8294cc0b0d6733baca6193572f6759499237caefc037e30b986a8b2a9b4b0849899b078b4a39379e56dfe5ee9d7573056843d9eca8be448dc0a80ba7933c3f7a0cbc11902cc7238583c02b02d432fdc16a826e0a127ecffa1d02a63708a7648e94818b9d903ca882e1b899627fb2ef61ce940fd9e3c6287c06f21cbd16a17d1a048ee2f9eab145605e06abc3887cba3f0513a4b78afb58a69f1b0cb7c2ef2e67db0afba4e67f1da59fbf208321777eda6c9199f541300253839c9583efc564feada4b24dd70790d878b9fd99bea1832d0b224ddec178233cb77bb05fae91dd62e20c2fb96bc66113f4f05eb690d330fc18f75eb9618f9c72a699e0a4ab3ab972907d49d33992238235fc28da552d8682955e66cee796d4f34267ead78556fdcd380a671b74b013f73c56395c775a92bca7bbc20fb8cd779c483e35c84bab9ed18711712a2c77078a0d4d7b5bd0be5fd0b79db7cad616e5536069798ac8412f6fd7e7075018737c00ff963c2251dd648980fb49e94514e1ab740131db43fba575fc37abd94fb534e9c09eb005a69c6d8c60d21d57158e9f8450097468e1a7180b9343bf8f4a934182e5293148ff9ed0e000d826613695842c519775e28cc1fd62c9c3814ace90cbc56b185a39cd9ab0303521f10ec1cd2cb285a4340d05c850ed9c71423f81e7eae31bf70697f6e24608ea9a55dfccf3d0ee82c61e0b823d9fbeb7c7a48f1a931bd05d75dfda71a7097670c7b6c8b54aa5a7624d768a53d5dc99d297203a1e0fd3c2d71d408ab8170dd88de557343e223ba1acd61fa10b2506fa0c88c631e0ab22793acf7b5056ba64505ce88b56e1354335b8770c6e8a97af92a911bf9c86592fc06f627770ce463e524cc444a08990b60e2a9d0deb5bcb098b8ee5595bc9397c94100ad395aaa211edc12ab123ac54f64ae4e88bb66e89f72bd8a040ae1136bdd12c1efa84c15d9efb82a84e6cfab2ab564d7e850659d6b7e6002dd6a8b4c73d2e4b28a4b18a34015c4a4c3e1d2e87df88c010579026b488868cce385f905a51f966502574c516657183e8714787ec300e792268455bf929c817badc34816439cadf6a8dc09f7e1e73829c2e7feb76f7ea35cd2249f20cdb7c1504d5f6bd1c8036d9e027b1ee0ab8bd5fc43e291f06f0ce27e69224ca05f75959dd752535487838e9bc00971cda042f961b005875c1ec0a3b0aa7019197f521dff1c9f2cbd821f5eb4de5a9c56c8df66eb8f559f8754aee449f40279196c47bb95edfc81a150e3815b9515970d21a9a9c7c73d001af1c2cec178749138dc3fa72f30b178a8f4f59f3c37362fd42b13d4f253103b3087123622c67e892a281cf564089cedb77920e1f416741e352df4c4863e2de3543d7c4202fa2658e78a1fcfe50ff372012b1b7a0aa9d6f9c371de1bd94e562ede5d3d1e55249009647b3b97c9d28f5f75eb1cf439ed1d34391c814a14cf605ec1ec135e17656216a5a488506932ec095594a00987ebdf992396c4d1c1003d6aa4ac987c801c4d8dfe07cab9a34936145c569868bbf879568f59a10b95e841a85e7300e5af1bc07dc22d8393955f08d2d9229e83458b94e4d9ef3ea87f427276d16f463159fbf9b9aef6478cb53a554d4c82606c3f4d64d75e180eb8ae68bfb755ad9794f7244270e98ce8270f6ec67f5fa1f3541cd7dccd629992a79518037e063c20d89c66d88b51d62264285cb8eb03df29c572d78c10c5400bc7d78c54b3c2608c4707ebf8e864f34188acc9532a8f172c1f522de9e16c57b1b42bd40219c8a18b64d438c590f442d192bc3c03e7e13c9b7bd639afb43dc9b93136713e01da8da03d2da22a1b58fcfefa633e45f8783fad563a61b3e90337a41b95dad0f1359521a5f0ad39ebd3a493c41c8d2981808dadc3a399d4d673874dc48e95d04d863dadd2d13e5aa4658244bc5ec7fc1e2497a187cc1e7bf42832afb62668a299c4f678e846df3c0c789408091e7f49a9838bb1049303ec97d9cc3dd75fcd5aa8f7ea51101b4659cd9ab58836b47ea3837e87991500f6c558b5fcfbde1f29b912fd99a749ffa25b974d7b2abc43ae15e6fb48955f3a9168e8b7a537a00d1e31c5d0f62674a890f816fe157739dac94653b252e20b383e9cd56e5cf1e794b0914201d73e3aaefe75ceebb80b57b09815ca374ac87aec758784902509c40520603e23fcc7b4fccb0a800e601ec84a53872c782e919a98b835032f39405d7ccd06197f7194eb5da0d91c5b0c9ed7a766982d40589d3934fd024b0a28829e04ad775d806dea3cad158dfd939edc40c39f0eb6158d817df7be146c78380ed80560796fdac81787d51fa6077022091faee0f5adeae33b7f2ac7749ac5dcffffec05eb56263c871b0243a52b701f09c80f84e2fd01bdf5d211ad060741c18ffad6a87a2cd19e97ac5637d8b42eedad18a6c3a595ebbe04760af64789366d9797b592c0bae97faaddff4fa165668c693db214a7a8028c7fbbec6257224608366da1dadf47887ae9fe5ba5d638946226e2b499a194133b542d075c093908fac0070ee006ac3a0b1d8ca0b757db79aee1c59e8764de3310d40650f965c1ac66b270d305ed9e4b7ebf331b58d153b35e3807c7b94a6c612b6ba515f5b9ac33b544f8a772d2f60480d2eb0ccba8ee02725c0c72d668b5038185829c1acbdd8f40d32c4610b486b502050fb795684143c196b5811ebd5951192f87a5c2fe22bab7fe292638b7336bafa25451ac11859cb434037367741f7a6d500eaacfd6e6e4e2263af357d26d4fca7d8f5fa6d106d34128cd7966073078d7ce586ab1beb238cb96c9d0a535e11547d544e0ae2078406af5e8d59026fae4874817cff4cbf2efa399f4fd328b93469b5dd8329d537672cb7d8980907efeb422da77b9235c85fe2c95a57720676f563360fb8e8cb54b2dfb7b7ed7f9f0974f6268d1064271113fd443fb467dfb761818a3c8b55632f53476234a82df7b6c265fe8861fb840184aec6900c29e1affb13176a9158d63350bbc8d946d28748e52e9ffa54bbeb0ade151ca0f562373667fa6b93f5b07c7d93ecf0df48dcfacdc2ef28b5ce09b76e7b7d7d5f90168f376459249ccaa97ab126b12acdd41c34c6bafa42e0764a8b3fe85802e7810dd8b4e1d3c624e74d4c9030a12056f119c351b07e8833b1455a53a70348011ad713a02c53830d12d775bb876ee0c8d3747c60bfe73678306ad2626a7cc030370621b1e8f1d74865ebcf1a3ddfde42920184142f4ba14ef996ff3bc7922614a3e68707e171b65fed3d363576ec925dff9fa6f6ddbf7a87a1566ddf710d0ac467edb094d3b48ef50c1e692c429ab8f70bbba02d97546aaab3225d8b31bb8771caed48b8d258408cd3461d6151717c197dc8e8258ff4df4c9b31bd9cebcedd9ea9c04898d88953acf6d9fae079c5e2d74cd17744cbaebf177c33d2ceb429f7db75166cef306b51338c29226683915e46cab1bf23e556cce9b0ee4f0924c932051569d613732c8eb77c7e4a97ea139f2df88e1a31fa9a51a70cb29b603c57210866ebb5cb7a5cd6ee16a96385ca78bcc25237c23d25a81914d610550d0e3dfe25210f987db43232dda0cfa777926c9b4880b28fafa81d3d5faaefe4894d33d983a41444c1d0f861d0807dcb20dbd1cd90afbb59b806256265e3dee4277ae74389a579dc17fc5db5d4531c8835b70d7dde71e5d1ec8996f1afc694e7e89735732666efc26d2662a6a075b3be19a8193e76871b83c6bfeb3a3a5da3712a055fa273d93bcff62883dcd52a6e8e3aab9907409ea765425703d6bfee507c9d8c7ddb454ab2d77ac4756f2033e9ec7e10ef3b113b473e9c7c23013fea9e3582211cd9404f3c39f16a31a671774f58ba680e89539a0a7bf5fc991e3bc5361197131a835841fa28b32b515cae1f0699d31c1e0c74e04d6716d05d62b3b71224e23f9c8716361cd23b56f9b23c53bff707e2d60cc2ef2e72cdc221e73429410ac12f7780e66c4d4780c61ade46ab51dbc65dcd0481787d56603844c78c38105faf9741493b07aa5e9aef269a08906e44847163662d0232ef6a3fa98248d5b94d5dc0e0f77dca9ec8400f76de1717564f4335fea99402a04c2c25328b239f25559353de9814ee87196c32ca8add2719ad4a61478aaaabf0efff761fe254671634f695bcff82b03b89857bdb4224e5d8488cfba6c1c9f2eb6631e5f9978159119ab40f57c12b4546232a0e0f722487c3d7cb8953292940c7cb98d29fd042f1057580e28885516d78446ef549ea9176b23d9d7cb1b552b58d79e90f5893aadb6f67168e957e62ac5f926ad421dd6e31ad400dc561b4e38a31d4942146ffb5f765bda0470935274aced76532311251fc3e8b1c0fc0be741dbe5fca12987620e79687b14e5d1ea62aa9b0b91c19e76fb15e00b7dece5396940e7e27546c2ee041333edc160a482c91c8d72edf221df1c179039cb7f9612b81e2445a8d532b822d7f78e71621ad27720d8feb9c7788ded2b17bc60622b0ee09e5b02e207f56400d078d03a166959ace3e1b5e60f4c99c0afbf43ccd65301fac4d0507608266de7e6edcbe72a04f72edad9dc4ea4aaca9c9b323821583ca696ba1f143934396cf537b9f2cddf4de2d0c4abd8c5dd923025cb9ab67dc03b51885672df6e5655079f4bfcfae1fdc9a6b6dd4880635a7b1f67e66c4e116dee559d416e98fefd3a0256a59ab7e608aeb3d0e8ae5703528c956cf8c0d42ee5a4f9999eb8173a6153ac47e1e4d9b5c0eded31daeb5a2010efe7f4d8f47e30cfb328fa1db4e7676e91b8d86890fd31f7dee2776a9ed76aabd2b172d8e00c1d93a1256f975e667b3e8428438bec709c50b30c6eaa4dfe1a897a0589f2f49d0267b8498c5bd8b44aa3143fa4c9fd0f20f71025a2443e0360d6961868a53c840b3fd521dea11ca9e5f8d5e1aa9b8663e34ecf37bbc3cd8297e696bc6c4ce64751d479be8139837fdc58ad21cf7a5150f6b6d8f65b92fd51c496c38332e329eb14f0fc01fd4403480fd7f658388e64b165d0d65aec271c94a3b92c264313d71adbc169c29f9b4c75e2b5e6f82480dac3156e7944be0ca6333a72de666cd046355d854e17c209c05a68f021dd0758a14246e0a63ef62d7c0233cfbbf81c03e32bb0ae1ad681df40d32dcf723998e674ac11e935410adf1bc620987ddaa7421418053105c0c8ba7a1ad65ad6af79c4e6df1fe72b328393b27d893e2b226ab4f4888ec2323deb6c6c58c0cfbb3f178d2c350ad3c6e14972eef545955550857a7460b368c8107474a1a0ac8e1d851a6ffa8af4d7a5e6ebc22dc11e0629762b0b65a1b8a0fe19bbac564653427cbe3bee0cb3e7eca3fe8c3db101bcb3631cfcaf88532fa836d067c41f7b770cd3216b6cf959990d6639f1bc9d3ff2cb4fca942a8d5d1a43296bb1d8b1ab6352339af96b758bd32b792919669ca55d6e5775400c325d5259970c64ef8f1146a09c120cfd4220b12065b13f7ff0edf6643b81985c17766a5acf650b78e92207242070d7f1bee95378714f9f86b6a70a17c1e819566bcb034e4b5e23a52cfb43f454424ae5373ea4d2daf6995d626de267b306cc22b3420c79978f0316d974e0f6cb9e807b99d8cd551ab5c08358f144db5d5479c7de9d467f68564e480c61eaab4bb7b078865060bccfd0b23d4eecf7e87d0470ae34ce49f2909fd59c7198990b3c7dc21786032fb9485eb0826ab4edcd5a75102734a74c398be944b1ed848b36d050cc2d8964f2aaff39e4fc5449f47769c1acc0f8c8c3b378a8d008f50a2cc790f88f9702abd5330d802385224f5fec0d0b30952ee021966c6cd728eaf2666c65a3c4acdda0fb7a15f49ecb263c7b6527a79c8705a8d5c8f1dddcd7cf3df8a3f8d36184a97ab9ad1eff1fd5281f1c58e8dd764274e29ec14c79ef24dd6a775f93cfeaf955662ae33641258f1084b3e5cec9d10b6d4a68c1b7d16a40113ac7f4ab22784a3c89be591d05dc5896d28f669431e2db1ffb7510a51c1fb826813f8ebcc708516fe72b76b152ebb70a3541b0f4c58d1909dca82450eddebf29aeb9321b450f5014c4bd8f2904d173bb952fed20d1824893dcd543fb5c1b3e109652c3c077ff5fa61e71a20e8bff37e079ed8fd1ca79035a75142dfcb79e520703d7e0d026dc7bf5ebc5961242dab413443b1686cd79c6b56639bff9c4a456fcd3a5b3ead6b0d8abe88ea1cf5e078fb76a87e2eb0a31fd40db38e0df340bca6755618b4e47008ac48e0e4831c00fec198f6c762539ba9cb055df0dd7a247a35a7054682f907259d1ba386d686beed38211d1d66d4f955ffcce29e9fc5ccc1fd9d9e4477f365be0d9f2dc2f399d0b2bf26a7df5366cd355c5b010010fa5e842d4fb0adab22f343674126cdc3bb54a778d3ff15ecdb128f5d84cbc57d170cb471624117d2d7412e699bec153bdb182cc25c0dd6a765cd6231f8e79d2afd551454f9ac5bd719374fe8565ae9640960dd88e41cdcf7c8dac231aa1dc0105104a92f72cb44ff54c083b22cdab64a7576d85b72fde6d32cdb216dc2543728bdaf7a5ba02c6521676bfd8b0fafb664a8104386efe250327b1311c149774a30771c2577edb17e1878c1146c180ddf6a0a525cdb139310ec7dc301b54a87817e119b9d9a0ae451ef1a19a1eed7817e61c2591f9449dd3617774d039edd233eb3dd312559ba57e77f789a6a6ce02c52e759ed0f2f18223bf21c60ef501e449c23576ae39b961b017c3ae77e28f5614cd578025503d30430ff098f60ca6ae1d185f44999a1fd00c20d590c44e4dab54f908bd5293ba08811292e3115f35b7c3c3af1521c13f178b92baffda588258ae337ae88ffb32a7b071c7a1321e953eda3a3152abce342096f379355576924800753f1bd22f19dec5c17fd9df22ade2bd0cbce2eb6b057bf86cd7a8649860146d7453b16b2ba8954febcf0f9ce71c0378f8828705e090ae7fcf8c0f9dce4affd7d69ad6ed02be6b0fc42960f588717487fd5c11e32f822273ea3e61b7ac8eccc18b086517a89e8c3bc4706b6c1adb9423b0efc7403328b9fcd5b2cc058a205e260e441a5ca2749bfdb5f629e5a58860b8b6f9b492b3c6586fded5b73f5e4da760f1245d85d26faf9639443f3436f881683bc0acbc320c0ff4b6ce3696828d326e3591abb59a86370010043c6ff5ef7e6927b8f36942b5fd896f7041ce4e113f5433f0084fefd978748c3b3d7b74485f5f59f8a0d6e11bd30c4e14307504667a797e8dee60cf8b1bed660ea08c895042308d4d795d642fa19e8e403e0ecb1f93dbacc2f334598af1f843a4c74dfd3fb37c6f0d9796aaab34ace1b2961e960e72ba3dddfc1edf202ff4a0ed2474f6e0165161bfaa6fb86671a749771781d2ff002921c3f76f2b05f36008af9421cdf2b9404a605b35e6e484780621c2a1201eb85394c5165f9b3f1d76c3cb89d33c259813b115a938a68189c6a0de29409bca3ebf42b8192708919c59552ccac2a26cad2dfa8337aec73d24abf55ac2625eb1da65c33229bbdb4e7726234e1e1f85844e8f7e89e9040c9032215145e6690c567c224bb3e44590000e963303b60c3389119a9b16bbf2d0ed3517558a40a38b9d826ad984221ee40ad6b5c3002ad1e511a9962616f7e684edf129fd11ec346db0d4b0ae710b9d7b5eb6f5142f423d417bf72bee16f749a8ba6a5facdc00c6a5c94666485557065fd0e1a89185e4a867aed7dd9d6d24388b37e1b425ec84853727a1cdf767dce7b11fd979d64168c13d5d68239bfcb5a76a50e0262496e1e7928d1d3db0889128ce6b5a7dba183bfdc4991952b866d1ed93138e6a55ae1affd5412c9686517b650ee21c5ecc1a1b7f586b4812d569b10ff6f2dad0066de30efe4f5514732d6fbc12904bb4d3ba988d2fde908585faba64814cd79f3aaae4aba8dae0df28dea1b224d133b42a5cd1adc8b3407979a00265769989b3e8f238c150f16c1d445b96cc2154649200efca4e64963ec258a859b245313ab279f0d4290a050723817939ba21e94ff1089fba6401e3e53453ce4c2b5b220343a9da25ce638dd4d101aecee981ea388752c365409af1b404833c066462fa7a92ba95e4649ac8f81d1f61dd0713f8522265f668bb59553ea8108aadabe72c8224ad3d773efe70344e3b07caf55f1d23aae702270e0c5f3af6d1140b8c35b097b15d3fd4fd80076a9a448f81e667483bfb48393ffff834d176792496f4cdcb308b19258f5344c4af6cde1cf6a6492d08cdf60c8cc5ec29467f0ac691676a08241829a0f5ef2a436bfb3e014d6df7a9f3d035763b856abf832e6767c4018679c77173556599c11546240e9440b6fe00332ee31531bcebf0c5dead8999b788c35cc829df7d60d14b243cc090e2f8442b8955578818b7684d3fec967e3f456f57eebb95492f515b9fbd755c783b589bd2952ceda997ef212ebc3aa72ba846f14ede4e9d1dec3fc636b0ff9ccf1038cdc498b66bc01d21476b5629933b9e09da622a17517a6679495d1a01528affb28607e25f485dc07099ca277fddc489ef38eff75d528c595ed94ba0a4a070bbc67c9829c031b36cb462572894af25b9b291fa786e61078a58ba32921d1d20ea4b091de68949ebe9ed36cf9b1adeaae767dec4c0440cc5759d4ec5d86cf32a316d95d74809b1b48394103fdb18071080629135b181553a66040933a834ec2488c3c18cc4c6edf382b8541501c4ed54cbc64ea59caa6f33e2f2eed8fbaae5501153c82eaf0a1f26be2cf6b7695ce6a45c4ba4424ba730700b2a4538fe5fedbe44f893edb76f70810a86d37495673c3ed76099dae7ac1b60bdfd546e5cbfc1a5acd615182073898b340f4c2d02f65ff4c6cbcad66da81ff61bdecfd83faef8a3a306f9407de225e81f2d34e1b38ca0610deee01a9c815aabfaab5fad50d6344fa20d2688a17e2eca7d997d97a6f7a142f4442c227b467756e06f3ba10347b9ce8aee4fdd92b3b725014726a924fa7d4c2f33165936583b3dbd42eb10948064adf679f77b862c35d2cc21508965cd31f32fbe23d8fa3b6469c7d57bc79494ee51ac5c66928b5e2fdfde5c03d3f5580e34b1f8246f7520d9831a1f618a155cf4e2119101a0d64103a45ff1fccba667b266b0097fa28213585068b147f4e16a60681ba4fad27a0287ae2048559dad997b37f0780ba85fdb1c237066535ccac4c9b3686e06dcdf42ddec5661508968bc7f5393b4d09ac1eb5e23f746e0b9fadd3fec639d6b700949f6e4359f0cb314eb2f37987e5fc0c6827bf0738f1d4f2988a060527ce59ffb0df61d68a67cb82b20e5a0601f89c19261f939819bc55c04d9d8ed15cc0afe17d6377fd14473f8ca3e1d13c88aaded6e75973116e0212bd32b7bcc962eda77832f115699514e109a6b3e30d1704253730bd93033e7800c95588a55029323400ff07bcd826eb24016c07f78b09e8afdfae57f7bf5be297f02fc6e41f03031d0a84e13c8a79613f7bacbe87bcdd0e25cd8ca8d71682b84e4468a36ab09f2b70ac35f3f8ccf0e4cef2b5e2299a2a5f765c5763446caa8a714c9822469662e9df796cf86dcb2bfc53c2dc7da5fe66c0ef3fd934ea1fec74157e3225494b34e394ae0c3d2ddfcbe796438f85c8c45453b4898d9034d4c21aeb3bc9af63596fe9cd97c3fc7ce5f35e09e59207b71fabcd85c647b8c007cdfd7d06c5e8504c3717059da9d6a52fbd27b316c3fd7a8bc86cb71c62a37b7743fd6adb795ec0a4f092f9940b58795086a66979bf610d106faee2b2bfd7c94e3b058803da7c0483fce7f1d884cabef1e91afa1c2b3ff2b8b55cca86031426556a660a6e0d9b356eefaa7927187b2edc9b2f64e066c833079b63d67f246d3684b47940a52a1e0c12d552bc3c9ca1f6a256ebacccbbd4073036b573451fd9b60728aaf98ffc7c2f313e4b038d801bf4be147e9ed970a945d542d449f0ac7f9b8ab8de46923c6e43f9162d829e709efb55187cbd30e3da430d8ba3d228a65edb4f476e63a62ef506895c63ebd1a6078bb2f7bc80f601968a7ac1c0d0b303524c93037b4ae6a6af83bb65bf1dd44bcff0b574185b683424c2b47390ed83892b6e31f7b963d4d2e4011b937d22d037653f0a422911d11110a59c7304aabe407475ecefae9dbc8ab6f8674cb28b66a6591dcdc340cf017f6538083cca98692a158fee026bfbf21d3e71e4b34f31ef9d369c6cc39912aebcd6cbf9347645b7777d42a00f7d6c286c2f3c35d71ccbc1f1f7b6783da301f0faed3e2b4270c42422dfe0ec1ce021c99a099f7820baa4b4285440d042decd7e14a47da48d9f3d6fd47aa8b9c7326d21c5a2fc88b8ba1af058b9b059db1c275d0f29c0b7dee2e12ddef969e0556d1f9d04a2e61304ef016493b1258c18959e509b39630acf49a054c2ef7d2f65ead4a04ce60b6a19050d9d57f5edac3a09865547be0f1fb26a80d7540978be0400ae387df9cffebf4a48f268f1606a6a849b7593564d13b2d0b98ca25d463a5d2869112291e858fbe2d16e67f1822f0df7b29c8d54d7be9677a98829880882542fd5f6727087a224b4812dd1f6de28212c21ccda67859f6ee79457b7bd5ec814b33060ba55c59a78fe636e4fbd6fe3bbe755a8317c47f396ebfc5b5d3a9f44af37aa5acf7198d676a73226030cba1c53760fb4a64091f584030e0063991e94cb646c6796bcddcc770ab3ece9d073d0ef3669c7527d7e8c9b50ae7ebd49149c54f04e2057df1292f9756ef18d06b0c1f8b5ddce204b7a8d330b351ce00dc74cb282fabb35c48ff21099fc67d59308f4b77a8a1babd22660694b1b6ac2e87a6657c4d75ca0254d0196c6b032f950823a8259376165695514a6765343622fe873e74d7a17936bec886aed704c187fd36b899bc966ca3e73bb23dde9aa9fd7a1036758b113cd6ff45c60af80bb93179cabf59e9a73e72c44f0bc1084dd24f741acb2b76978efa47a1df5a5b71bad4dd2072906573560d3a0bc5830114edf5fe38ada1f7ba5a0cac327b5541165b04d0b0097984e6c1fab966a8aaf54537934719317a5b2284f1bdd8630957e6d63af3bf05ee69c23ab4c43e5fbf3425d04362d4642e41a3b3bedb9b85bd66ef98708e3e144b618f137946a8c05fc020d2d7f76662aeb349c804120cf5efe8dbc9cc4905f3facb3b759faec0a14feb0001ff5e4a88bb1eb846cac41551c7951334c9713b3e688d662d251be15c8aac8c29ed33a405080d51938cb516c197669bca3f637baafaffdbd1befd1345ec958885abfc66e92d35b9e6f96a6ccd17c108ce470bd33dc914f8c7c5ca743ab29b9ced98221d566f3c9433cee5c37afd32a17a361bae78f871b5793711cad6d20e109ff2decbb18a667260c0a860d0c25e1de36ded9a6effad0c0792ddffe8d4b4b37cd621f59ce3bc92353f206ae690a96c3aefb6301f94323ca2da78acf82f8ab201556b88296c392e2e14245cf26f2fda30f41b9919adebb4bde99f64cce5dcfddca4a75fd59f6cd228b52b4e82c4a4f4700ab9b6e2628e4c5499e856c6f23e5d33294ffe47128b2d7bb487e39adb8a1d6cf816dae4f61577408aa4ace5898047d29f0f8fa366ade782d2a846d060bf42dbc4359748a1473eac4b9344b8a4910e60c2e09506982f5189409bee8ace447233eae134968d41131422ef5fa04139bfd44d053097edef12d89ec016e1914d24b2a97cfb7f295dfac9fce9026f2cdab078726ce98892d95819a7c058412822c29806bafeedc1eb40c52dde46fffdb6ca9f2232fcadccc5d4b8ca64fb63f539a245a98716627cb17cc0629c21003c4c7c638d8d7126fb29e2f38768e41813f9ced3917ab088929593102bfedda34ecfe2ec2b5859059d1556a4474a864426869b4d7eb364a43075d8fd54ef918a927a5494d0fcfb4fe2f840caa76d7d73574707d6b80737d2998fc526856b4c2edd8c8ceb6c0050274c5949bd2ae5ddb16cb9d159a02c7ccf3311aeaab90c884e883361a3b7cdc293b4139559643ed0b30af147774e2db7b031fc1547b4867f7d398aa898d0b6c5c04ad65508ab0130abefcda2b3dcdd13eaf751f7ab3813a16eca1ac807495c4c50e8189f3eb1aebfd812e62102f32d8d3e4b5150769abd8ee80cbaa6d8a9ddc73984443f3275c48d81105728157202c0161873facc1eb0d9b5bbc4d4ef710dca18cd62cb3ad3898a46bbba0ac7a9d093c8fdb501ff546ac299998f0e23d4fff853216c987e665f0177309e68e97bfd08dd98d68e3b1c1e423f7613ef21eaa308427c73ef308b8aabe9f6772902cf8a41f229658fd926c39313f7c14dbcff10ae2f08642f7434bb95feb63b23c2c30fee8295738aa0c8db177254d0ca36acefb9bd4b6081353ea2e2fd29bcca698ddc5d2015357c382fbb5154e85c2d622c6a0f09c825209f6413204663ab896a3cc8e88342e54f1802df64b877978468304a56da02b7098338fe2de615ad1a76973dfbfd8c21d602ed0a83e7997ed4b650d5e6918587b0e92a006ff40f17ca7edf8e3cd4383df64775666cd20e81eb17bd4adffc71a07502cbff1b5257b5ba4f0ce003a50ee7fb6495a706445c3f4608f645c0af87eaaea6d2a37d3d2ceb6a596cbdc3844e295560e42772a1e179e7912825baf213c53b46d88409d47175cc49ebdd214911342fb833562c2306efdcc9140aebb23e7946712281e9f776ebf77eb608ba3a061b6694b886423ca120b511ebd01d5df4a367a55758c95cec2f2c19b3d6f9051664860d3012bf7a78de72340ea3dfbf2b10423486c755531265d6bb4d53df32cda57c2c45c032e917a6d885aa73f17ad25293ea7baf39e822dfc86b362e091c09496874553ce7bba2ae4b30b2f84607b751b59df7afbdd84fa3939b23d8f588180669c1797fa2d2ecd6acac1e734136980e39e44f81a06d1ea70f3cba5103df99516b89f51329f07e92d1c07681454d30e0c898ef1d5a1bf1a0f5dd6e4ab22b088c0d168d9d3a4a5d5068293bcf2b7c4405ccb4c61ecc68d4f1d9329f9c03b630edae000a2e5c449f6c1cbad44c288dcb22c987bf3e27bb44e48978e302839194f2f6f22c675e649f9a698c841e0e73bcc398610d4cf6af9076ff19a679a38b36b617aeb1147d8fa0f6de7326b034ad0eee77a2120c600591ed7593755fbe4cd49fb7f44afa0d2636c4a60bc7e2dc91ab1e20f5dc88764227ea25a78669c406562ca3150eaf2468f55bbdcf6d3741f0a939936b167ba72fe7943ce5691dea0b28c109cd4f2bc326fe606d35b2aa9f31930370c4814eedb6f7f52d839e1921e4d274fa46ad699359a9d1dd2d1d2590a31ec83dc69ca75f3bc48355170baa2559fb4ae6ff68d38c61a677d1216e3970c3babee3a08d432a92d80f086092c081e7e3d53fb3db4754fc3c808840acd430fe18bb7e188fb3a263317e938f7a5febdf467a64f9e8e63574115bd6dfcea835de3e231fb73bf341a63627d97574c893a6cc7bc1b0aad7cfcb338610afe7a54e1628b723acd9926de473696a0063f1e4527debaa8f97e824b9ee705999a1d2cc53593978f7d01fb48abed330fc9c35a0d7a439288231952cf67d27ae5f9d4b92fdec93dda4c0c4b983c95c1f775d2cf8e7f7ee05619017b9ac9f5314411d091f96745d48d6a7497b796359b84f034a7c9f8eb7160d5d1ef6e0aaea45f927ca58b9099864d9cc90be64b9d674872f5837184dfa2936edf75151a3f1b393bb8d1c5da3fcd6dfa7651285b49b3fc30aafb28b6bcc4265902dcb698896c7dd856872f71fc93b454330a4d0a4e73d3016add4766c3413bef1ab4e52f8a1eada8e99765b930f4ebfbb178fe17344fb5605a89f5678a39eb241714b37d4844b764cab236714bb962a22dda3aa617580485e8edc5717f0c54a851b4e5ecef3fce21c78be7e5710fef7bbe3573066a5d60683ba4de01fc876ce916bda0609c400e8c203e32d2378ed47e4f7bac53a3d5aaadf48b671458bfb980c87ada8f604bad24c7980290e28a83a0357f4be81f6bcf481c4e2a4aee2070a7d2fdcb134f86760bb8ea7e4493aaa0b99ae397f26c95178e967fa475b7736c0843aac27af85635f95b1f8763725edebac6e9b51a32ae92b425033a401bf5801d9d6fe91c4191aa44f095e9a84d95f6f002724562d96d2807adca0a2622032db6e45356ec3459c535434f99c14b872894d1f99aec31a673d7eb10ce015a2390cc52e8576d3c364159f43c0b7b18b138c5f488eee0cc217a9fd2c35bd11a238afd7e1b6bbc8b79d28ab16d0dba76b736e33158d47fb86475c190ef70e06433165c40528e1a0bc8522bb24df161c6e05a24b6e6199bff4e1197b78a7b71ff1e1a763fb547f12fc5c6e806d4f952482bfae0f203c1d2ad916ce19b6332c6fa0e5402debcf5b4a23e0b3c34a1dd73a58db6145119a96355bc88a87f565ae32895ddf43fdefbaea3c8ac7c0fc76d8e3e185ac22081a3f3abaf25c340d9b8c653f350011b9d374b4c98821048d4c5e6e9f7a83adc3dace6ac3a8f4cf08c641e63a44fe48dce724c1acaa3c379f5cf77bf737c8c0c9767c04bcf95d8d688295b4ec4049e156b09e8d544d807119e5022ea8923bd2f4636fb790f7f7dffb77c9e7f4d27fa6340163cee9968515e07b1e76ccb8ab2bb60ce7c1dc1a365a8142565c24b38a79a9cebf84df1b8f383d19728ebbeda47a34f8f8bcec73e56d6cb5cb0dcbb97da8eeb99995060f8c0d67967a8532901dfbeee2cb3550da30d5db435b4218f0b82cf1b3187870f01ec88fe18dbedbeb60c2e5c85070556f426914fc4fba87b7d4972733cb109fd19c6cab074af35cc0582381a626641b079113a420e5817388ad5be01363254a226bea0e17448f3f6f337a1ecf54b59040f8c8328e57d4228e3f1e694f5a3258735375e5839c50be8c7539cb36ed199e828b12d358ef6f655dc663cf02bec9c679f25aa65cdc669b0cf00de4a668bab42098e7e8e2baeed00fb789529af504229867a344ea3cb2faccba8df94fd9b5731b3adab8b46131679299e04209f74c23a12ebf4ca115e12bb5637ad5c6ac67f23775e8703f1f8ab0a6d8499ee4dd6872abed5ef5f4d8e155482c90772f32d356649a6e8c22094faa07e7e40c6384e4852bc57ed424de228b6f3e5745cfd351a6f5c0a91d2742426481426e6440c09895a710096f9c0b8877e1abc48de51c68e57d0e93c832cca4815779d466f02adc46006066bae42edb16b0eeda0366d704f7d8641da242ccfb565bbdb4b08987395fce86423f37dfc34fb25b8b79ebd99336cbce805310d987a2ca677e5d3effa0ef1b02db30e33ca0820a861760131be67a0c3ec94485e8af47cc1de58119dcd7e315a07c77ca3b96e1eb60f8758546a358c845f0d0b5f5563046e2c283d00abe502b6e563370222971cd9ac9e3daba01551791bdb87198653187e666852c82dbfb086492603c88e594cef6ab6a379d8a9020bcaac9982235e19f9c98fb17573e0e028c0acb02622b14396f1b52efafecef52d014b2a58602110ff1038ba0d5949b126de46193f0a8516abc7407ae4f553bd5b82f7f341e0f5224345fe8de562e36c231730f6817f902527efdb7b83eac60d74931a10558d419e722517806956c7c8cc23082899bc235456425c7d033bb0b62262d98ccbea489bd6a8e36d856d42102fa7502dfd3c6a65b6462fe4faaeff2b86db58d9498ed5a742f0202fbc2935a4d1580298a6fbfc6eb0455541170bd5341805ec91f5b5dd81e09372057ce456526b458e6c0fff2642821a5e3a53a433d85089ad06a6eddbd12b30528869b5881ab7c448bbcf551fa99baed2ec08e9b24cfc8db5ffea813b52634a266bceb1a797a31f34dd693a8dd49b3d689f0f2e8d242ad0b00ff64262803e46906ccf9ff3808e69da3a787f4965123304020edbc3c8f6914040dc3dbc1370e1eb68ca9316c2c1491b3091af5a56aac97d817e7ffbf689910e84de6d04b1b9d3c22be993abfd3a302379b3d2a23649e426d8bbffcfc9646dbe959c0e1943d0e98aa506899be0da8b2cbb22900e181014f006dcdf5933d3df32ca9ec84ae7c29dae8e51865df5c5324bdaa3e8a526bef1dfc4c0948c33dc272abacc90a3a5cdba19baa46b0d0466d7edd741bc22ff0054d0f40023920c2731e60bc8af4c58b5dca447360ea1b89f37daddddf54441b79a3bb73b024a05763afcf2f4aeb75d04c3a3df3811058b4b57dffbb1c73f665988affe154d5c2bb632719663a834c9e02ece02c6acb24d1b641955b30657c92423b7d1e7f36473f17cd2205473062939dc67a9b657652325ed73f58c81dca223a5557e72749fb7bbf2e1b90149a69c4234d50a27015da258292d5bd1ac5dbc60e528a3bb24c7e728c3eb33ab470f58e8183991ab261174240637cc344c472eff8c7b6003c8f79d33a1d325e45b4ab9e281ccc2af7e745e5408bf1f7814e3389a92efebca363fcfd11e4b75c87c7223f06561f20d176d2b685abc02791b539274590d51032bc0efa64963d222a6e2d357778ca76df79b4ed338496b76f2800eccfdd1ac1eb98a3c9827c4d1491f832e318c416bae21befe278c5b2e7d0b879b5d3ec4b5b5ddd2cbfb3defe7c00a2cda9decd52fb205165981942cf04d14115044054f4fecfece405f070543ab80003a8cfb333ba16effcc8409b5eae94174ae9e8252ea20e9331229f12500c777664f7ec770a4daaab06c1732551e3cc41a3f0365e5d401e21a0393f2bd16a477182aa8306be6a84afd97ffe5ca1647a33d2e3d2e16915f230c9c7de3e2109f3415d7232125a7bd8cc381c93ca3d1000e644e7beea347fa129c4da175ba60cd3cc44605cd0fbd522d098a670ae9f5146aaeff6d6c4b21ead9c7c203ed30f84aff9aedb184ec011f8ff6febe5586d8df08c52625d70fc7d6a6c9f1a6a5c822664c75df08a6aa2cf57ad9f87c653608a4259b12d71977a630d49e0ddb839df9f33e4a5867bf0ca8f565051fdde30b10042608c037e381b4955b0b904f93690b5d69c07f1beb820eb297f2c03a8072af82f386520a1fd0e71b6692f3d6a277fccc458ab4480b8c9d3cb929c6c0d200c69adec8896dc87b8ac08c593b1f26649c9ae3073aff7a920717a7dd8f547f6b17a8ca249db0b6593b4171d2341e32cb9434c7a7cc97d487dccc3b56810ffd07beeccdc11741ee73b03ed972aa67e2cc2daddce9e119fba2d94e3e154cfcfe6156497c0c1c816192e57ec2f69e7d1d4570e5421573e81d1eba77916c64b45f9c68bdcd0400cef05f5d9f7454c1fca909d6d79029e94cdec121e51022436647b7d8bec6a3d3149d00527775f9b8a15874bb021a3ff65ea555fc7d3d9a71afda4287c65464bdf343dc555378989a2283f2f7c2f4ed9bf9ce06576c771bf1fabd7ba4dda7b7a14033132b3e16871c41d4543b868d73d881f68be293a6642fe7cf5789f4a87f64134a74b1b8b78049da62696a229dcc465e5ca1646cd9a6685fa3f295de94c9c96ba8ba114501950ad61e853dae2611b1388dfb1f1bfa1b069a5f61e29b950528ae6b2ab32638a6c1c7fdc0bfd8bde209a3fd3890393d98a1b319c4743d97cb96e552da63bf0e21ee1a31f4ec30aafca0e722c89c8020caf0ffb809db22df4e32cf7a38698b0d7b0ce3593db9cdc280e3544b4593e304ecf7bd44b093906d1c52dedb389036f1ca384c1651e9e2d0ed9ba33dc61ada6821063b38eb2015e005f98be4370eb835a26e7f1d40edc07246551b5c9b1056b17f98791eba22b695a0ad9ea39bc9e8045559e673c5d49a832307087a5b4b00739cb36d419d80fe025132163163eec2990ef452313ada42ca52fd435c821ddc20b8ed7ff579f848076ede1f17777c00c05b3d5a8febb6ea4afb1ed1693e9c1008bc7c622498b992f940a95378c91fbb29a7baaf4963c9b813d659e5643ca3150fa3e8193045868b790e6a470c3bf7b6208f2d01b7d62e024428b7619bb932c7f4e9687c547286a1dcc41b906110093bcdef8dffdce0e569b0a67413f0dc6a907929c01d6f636b73b65cfb20e7e37ec5ff8db6791dd91bb3ef5cfa0a65c8b41879f32df0944164c4a00eb7a0f7b2ef79e030a38c9d262df4756e49ad321013deb4193cbaea75ab7214f5cf8a9da702c9069973c4d887eeaf199ac3ced91e0dc57b4a5e47190233368989536ec18b54d1973b67a28937f2ca9b52fd89a8123ac2f3b2d41ac0c05865aec23f397468af3b8e288f612c98cc5e121a843ccbb8ebf621103247ecab5f4e400a3b44d308a9f84c2833d7bff8758877f90ad0fe8b6d16f789a59e53647518f3423dc99ff9ffed760dd7bcd9ee17300174e5029d6241fbdb99f8cf61a5564fa65b05003b6c047e76f4d13c0d4f57e4b1928f541a0d1fab682ab327d7b59b8e9ad9de98de8f7967222a39714eea6e424d13440737afa8f0d652637121dde902df289c59c07e9f7a587cf9d6206baa71d971b58508fcb66a9e62041a1f860585872e22fddd8572715c5396881505e83ecc841031f5657144d913bc00de4f0723d01a6f2cf66ed540e662ee101ea6027b2813f3a1fabcfb0be970058d3b1e92405eb2d1332b061ffbd2be6fed5d44f37aae1002745157b6e6c2b45796b38e70277dee8b0b5256df1679c676425ad7ec4a08a46c0fa6234c391e94fa2fed89730bb0a4fc2b8fe92ec0bc64bb40944dad0f23005442051fa1448d8152452a06536c56363727189b9539ec6cc3f3ae9197c9602e99f34443f2c10fd46c04f91e6ebe2b018e7a3d4ca28825db5a351450ab18cbba5943d7b5eb7a1ef9ae24b9dd1a3d1ef07c7c09d288128cf9ee6424be97ba26c545198c5247e8c47807c9f2773702a074ae6194f6bd4451c110a5c7eba9027dde575cf5c2d0f0142bf9e2addf43d57e11afb755d343d2864241f71948ae8390864983ff6b0aaf8190c2caa1361e83a14ef336cdd71c9cf8b31f0caf5cd5343dfb73fb0412316248f8bbc67a79bf5693e43dadb6409018aa2ccdb6f9f79622404ad24204f42e3a85a6c2808a866bd3f5f70dd30cfcec9c290449194b7ef4ddd905e784e40a7e748a2ccd5cd363f41bb467a0be3125ee5074bf67975eefa28f5c6c9084a270943698e5c671d475c8cfa99e9e7755b4f86b3a24e1d45d8faac84416948a369d11d7febb50dfdca347d398f02cbcae1871951755711b98d33a8c74a3457101b52d6bafe4b35b6083d0d58224e1f0ccf792e7416cc4d99982e89f5abc0fca6b0300d0473ec6881a8a631f3416d3fb6aa4bf056e0c84739ef04cfc89846baab53fc2333df26d522e7edcc6c42fa2e505f89d9d49871bf046c70096c67505597d0991867e4ee6b7a466a26b00a26088d51e748b2ca5efe77106927b2bf134a5938207ddb340a80c7227f134f9413c36ed1e606bb174c9d0fe120200704b05d66f61ffb737fd9fffb6b7db37e7bd18384c29f0ea4f2ef65572beca75b764c7533c64878e84de1a150b797ab7b4e802447a65b31c73dc8a3c09aca18597cd9cf22c6d9fc0ce55236b29eda1e5fdc2638704d22133e67cf79deb1518fbebe7b6f98b9afd25ccb14894c6aa78b640656e48127a9bc2c9b7d1ca34e042ff86581a6ea58aac03a64113b4fbea8dd39a7dce5506ad3ed1c34e5b55728a46c79186ad42cea1b448c7ac514da2558b7f5b72e65a0dcb649e54c985e655ac6828029b9dae063534d548ca8e7346cabd4903d3ba4894fb07c3fa085ee8816d8588281ee995078a50a8ee8bbacd3aae0a536fcc86e198b6f75fd9d2d18fda0b6f1ee81abaef076398919310d532314fb0d01b5f0226dd3fdbe78f9954e0793890b136ba13cc802139eae3c745d885546d3b1b785d5d037d551166e993da64ba4574180c539d12bafd66871f276b1cd2bbdaad609643f9944a755eaf108b6436a7667856ef6f98dc49a5ed8b7bf342164dc77264db42797de375501d4e8793e56fc84566875ae3203c8c8584f9a340f0db5a8070a404f64b2ad568d0d53b654306edd30cc9b249fb2cbfa6925fae6c5aa360ea353ea158398a2f5d4e9ab82729137b847c8470d365f47b9a3e3c05230e067088154b2946733cab1c3e3ab11ae01c3a2cedd81ebaad1e87f8827ee3f0c9f2d97c3918de4e5b2f4a54961219261c4cd3db8f16c51befb8423cb2c24cd115a05630f706ee7ae1d3100ef5a1783a1ec9e46c563163a0ed7ff498d43ef135ad2f538abbbc1a54f477423aeb967b7e0549deba4c79ca0dde410985a08ec86a382f40c3a4733e7c6383223a33503173dfa9d215bd2c23c9de80ed6459af8bbe71ec8b1a0e1de344876e303057583abdf97a760fc6ca7464cf10c668473422c3f1e0b6847e9724cce43880ba7fc9eebb1c1dd66e8c3a208d1d78930af821eb4ea39ac36e6c61ce6cf98a9fe31a524dd6ae549f95763b2af5d5e73028bfda71cbfb8d3667e2df124cab708cddfd549f9fd0f48e6071c3662eb4a12712f8005a27b378ba7069942a2fe9aed68c3206f4613631abac7c8d432a8bf4a172e7dd63aae9ec21f2d96210e75ccf2bcd67cae3ef19e1ea0261990092acf0ef5f64af243e05b8e79a3c10c20d035206a0015b1f457c0f34c2888d78f361b38f9e1da1a376bc0eeed3e3aacad279ac75dde01da7bf6313c467923d2029dad645fa333f8e37c77992e71ffd82dcc421abd2edfb802976076da63803efa5a897b2dd22cb4bdce62c7b175710a0ac9be16071805377b244f7c577cca58a7ec7a0f32b63f8fe115a6186c2d73c9820063e795b75b83d046c675f304ea50347ed243f5d653c167ae129dddc86595e2b9c8fde13a6e6caf4c24fa63fa38b08a19e23cbdb0a27a604df048aaeec93475fbe2eef527e2ec6a0693a051ad2066719062168c7cddae59bc4c0c6c8fccd66a72e9e028c34f3dbd74f53ce6c42fab82e627557d44ac3e8b5c92b442152436beeef554ca540b64cb1be5709ae2abf26b0029e9ebe5b6168f2cf8cbc30e5a4d7d94bab571dbb8570a2d791467731afcdce9213a066eeb4f3bf7d0588886f8aab6cb88d501a14ed1801731d88cb34700518491af85b539f3560f560e8d458eb151f7a5e762c491fbe68f9affbd59523092c1a9acf9c201783dbbe6c49d9868774cd9079da1c445e2b3ceaa24cfd0b82251bfc2f4b2535a5bd5e5e31d119839c998e4815cbe687c4c28a8b36633d7c1556e28f53d68bc92802d3f7b2dfa1cb39f8d22e9ce523a2ccc114552e322c69eb89e10fd5524accf0ee9b48c38a5c7a929c147ba7bdcd3c6e89ed7254b366676986f01a4c3384f71078ee2d545008cf44a5e19eebdaae9d5ceda99dc42d721d91e84be5b27a83d1ce73964f0ae21a5e22a80779f010e6313cbe8ef78b8776a6214157306adc851eeab06869a37e1d1a63b6a3f22606a6d07027c80b6973f193e07079add859f36ec08693a0a8da5f24ebe7f749f8546d5c28f1950e1b8b5c02c7626fb2aad42e2074f34ef8b70b80c388cd93629bf04edade91b00ebe7dc8e07ce913d737a7d62e03fa6cd0280ee0b7d1308b47cb27d717a1835e0778ecf9edec521a5274eec080f87c8940f8d96f4004be3be5d5fecfb9d0a45901759af5e468d287a170436334e66a4be236abd92231ab2ebc0a8efb34dd651c0eb98b18fc3f9ec1bb2ce8ef2af2417bf35b49e86c32ff05b2de48749f576d1bfb48c624bd04adc953390143597cd2a2bc045e39c56164096347dee7ba72510859c429c1b9d988f43d51e445be76cbbaee05242a6af72d612da549d297d357d04cb96495dee5024e6befb028144cddeb2d2e19aa6a6d6e0e162613ffd4ed3b3e5d65d3caeab3dc9990a2f88835a260a802831354d9018dd347f99d82c8d9bd9440b83e2869cbb7f3a66e3c962f132e329aa7e3484444a97f3ee6681adbb43cfa3569d20b444259126c29fe7f71e7e34dc53d77129078c12a4a56cc25c9337afe6d6f0fbee04bd95d854f7dc5cacc8f9aade59d8e43843e7379ca06ba4eb1f4bd3b174642f951dbcfcdbf697cc88642858bba6ef4145ac055e6b94b126cc240e90b8fb2a0856e22782e982daf6df148d442ba14a8f191653edd060fe48a5568ec72e08119b2e6df9a5d7a07bb964d513beb5d58c0e5b2511224cf44eadf1c9d63f160a66b30cdf46ed95db6d0c389102f4eb1fcb3e15fdfc3e89d5554dd2872e52afb6bf06fd05c11c7b9c3bf9375174a6ffb78f27a5a45d8c8e3168d781d05dd04ac7b477c9dbf3ed88740123fac9aeff0ca176faf41a0f5b2e0dc099d468a14982bf311223bfd0ccbeba5451612dd5a86daa165d810f3c9e90f6508687713d408e6f52a820922dbe8836231445c3fdf50d3987517abc5eb29f5fe06744b21c8f84754185431e4d2a7f8c06459b3e4e96dd6ad5d8add108fbf1014bbc707d7ee3ffb7efb75ed5971869d9a1fb16087f335ac6305c7df98f5d2237e0c3ef90beabd49be3dc5d4074ae81311aacf908fd6713df8e4272c8925060b86ce4dc5c0566cd7742e8876b8579f46b2a9379c7d2940409529b21d1fed8294048235ce697c83a240dcb41e065997242008c599fa24cf93037af683bf34fc1c190902232d79ad32e04465ca79df87ea3687ae02f3f4bd6cbf1588dcbde36d6c6c811b81eb91dc8f44de7ba8d36df9cb533b63f12aaef8965086341af654daecef68198b4d22cb8094dcdfae82ed67465b8a96f3d81a3c630da63e405be30b1b2ae66da13e0ce707ff40b4aafe7cadfa19c78eea78dcef3028dfe1fb614026a5aa122ddf36d58e95cfe494cfd0ef20a6bcbefdefa90eb08427100b528f318a312c70f8b37022f262e7bd5e4fe4de6e9cac913bd4a41b87ed0433bd9b9e1e21d4b71e76f829df6375d73b6a3d39cec35c75e65e4e6b676245b61ef4945d46a9b0570d06479f799d8ae1c79f0737b42d11f5ae0aa33b00e6495c3522bd11e98644c14b987436dc23c67b0ca3b16dedc42aa617b328145ca3d29986aa37ed41393f6c4c7db114ddde4ea160e5706be50ad3916a7400294bf1d181b4f7011d12b585b2164f1545db1706f7b9db2d1d57dc7716b597e98a0dea62f891cd60e4d9e98b47186626ada53d27b167f29d255e5de897190379a788130ee74d6595f9af17efeb8dde7cff38d91dc37936786f689661d8235cfac5c8c0ae71ee78f0e6b60f3bf19f99c2ed4a779a939a5eb2431bbdd675e306dcea6b154017a92053b7f0e906b2fd99da4895cf11d71ec031e21ec51dc62a40fc43feda9d6fc4ba4d156e563467c9924fe997ec5d3fe920b077d10aefabc060121cadcf1c53b536e25325790a721e5b46a444ae45c7209ff3c280867ad1ab0b7bc555dced3091d2cf5a095d7ae61c947a023ba2556f51003f3dcb58f1deed3c35032bd835eac20d4aed72beb9224a7eb4a01157520dfdef2d202f65aec86bcb99edca6dd61e480e39b48e9647944de62d2b8209baf6549c44f02204aeefe98bef282d194734274751dca626c0f6242236d526742d9e0e0417a3f9ad5c64dac7fcaf75b94188bc67b3fd0d8943156bf9bed099dc9eff835acd1eb98512b40bf675cd881a8dcdda12b06712cfa9f4acceeb5539a658fea3d134b4a9c7558a620cb23361927b9dabedbd0ad7a98deb5f504f1537f2d96e480d9fa25d52bbe9a3e65c9c21bc511660092ecc322c386219b4e80c8465e91f31fa3e503a062f10d07c6e82db2125457a7b159fb03f0370a422c314e88aca97238fa09deb115e18b2d01272f123f658851430d63b4a4c2c52ff56f64114a6cdab218a1c3b305afe0b12d0e6a6b61d3dc1ed8de31d7bf7875f53050b9c5f6f41c9e0a487cb113b17f1c1d57c296f265ba6b437a9b7c4cce1a0905fa9efb020885fd674fff715ab0ee9e17aca4525da717dbe59606fff7b141a65a9d6a3db3ce363eda55c612c384b841067ffd834c97fc8a2ac2e6f44364040ff82e299a3d33e122b72c99594e0afdca539e063ca84abd3806538ae65e753b84defb4a211139986639574e3c3887f22143618b74e04e29a1c798f08eb18fc86ffe8fa37ac285c6e18409dc150f9746b5cbfcce40a6fe0554d3345fa17c0c1a1312baaf8d82a8c24e0b99de7bf0d7a65df12d16f490d120b23387a28a53562d013f2aa7b0b4dc246d8d749f06bee398399ed9cd48af322f44a0ba63bbf73cd3bedf036deded6b8b353f1b701e33c1af487d40fd8a9b386f1d31bad2c617094697aed314bd9c53dd65c47b3edbc48c1ce10b206d481c82622ce6c390a04495f84bc2e6254a7bfc0113d2e675611bed68f393432f6227bbaabd4fd4a19c74a05d9730369bcc80350964b429fa26239432df4fa194a2c59a132415f13a0dbc062c86f0214657a7f5842c808c4c87f5b31fc4082b7e9bb263ad88a2a0ed8c5eedbd704a24ffbeaa970fcef2ad12158f9aced69242ba0263ec463f4804b2c786234f772aeecee17565186e9abf0b27fd8e62d31e7503db3583cd4dc7de08f8dfff47346088408fccbab2b8453e17baae2c1ade89723d255feb4af8564c6a456fa0e2bd64a5b5844dcab9a72b78d055fe1498e36488b8d02039d0bd2bf2beb72dad5ebfec254c8b8a23439bdd5548078fe7d96fb2cc81a5c20e2146f87c5df212d693105c40de7c8a542272c5d6fed0506c217fa7d48d31de12bf79c52a934382f5edfbba3826eca111b288a918f162676d6f2ba3469ef7203cd3a1c95c70c31a9428acad7e50ad5d4067ef38384320fe9585d3ab8ceef25d9eaf1493fc583ed8e8488a7f53b47b404c8d51a6a468dc4e870adb79dcd37110f965a2ee5c5d20a7ecf95a92a2cb448baa985f3e7069db20474a310979f305632ed4d4cfa25134b7635ce682d478a29bfb942b3170f5c7555c3e19573b2c11d240106e35cf68a6a3bfcca26f2fb8292d487798c6c2696e33615bc7da351fe2c194d6ac3d6b0b679a1df553f737de36f16050ae6187d2269319329ee525a9fc6b71560a1e5c9feab4024eef0d0a7c1ae320e8e834ce0f1ba5716d61ae6e477c904660c26f0769a9b63aedaf0510a88e2354391fc9ca2f9900764b12ac0e44275ad6c0df248b30951199c503b453088d0eb5bf19b9ec5da0cf965f02497589ed434c3e5d60e721c57db3c888addfd8acfe7d3176608fc2d480c345604636b846cbecbb0a38abbd2a29a5f546a87d885b2eadf9fba31a62e196de4dd6b2e3ada21a41fab26df9646db0146f7d2edbbff9472df68c81c7f03e69d932e629ef886e1501e8b046a02c358184895013a1f302ca8706bb3da6ccbe07be31f50b1391a361ecb9475e13415dfb9724dba5ff6f90705cf7c65b746aadda54e11d5fae2cb6d1bfb07c1878f5a952323a88703a9fc01308e0aaf85adb77965abd010813a3459f31999e02bc6ab078615161ad76d64f1d7dc5f2b3e937bf6605b7d970d4c175310836929437fb37648eefe9ce00d93378a9ded87670526405ee77831d4e6cba58210981a1e6433dc217e90867c6a6bba8a2ad433d615bff594968458a619a16c9553c927faef941fb46c35b4a3d1460af9ad9efa8e5b39dc13b5fe671b494b888c1f601d43603f4614536ebf6f94c26b699d70b701461ab01b94e3ed3b81f70b44f1d8e015aea9d2d9d0fb081ac86bc9dbab902bcabb9b10e329e72cab3612c257548b54bbc8810e8b1af3479d7e408788368e4c6dac2a1133d7dcec95c1ebffaf0a7ae76803b5fea2310d1c42c8b941ca394dbef42ee71dbce77f3d700906acca3b0adebe4d4e1ce1d7c62c4317990f2f539c9c0c27c3b82c24661b7222be3e7eed86ddbf64514e8f8a999df8208706bf381abedfc7fd31db37735789ed941170225689b1e14c59b5a485fc9779ef740b4ca575353cf0909274c2b000cfce601ae09daa226fbabddc2093fea68449ff1f1eb40e436392ddb6c31bff9ed9bc50fa8f2","isRememberEnabled":true,"rememberDurationInDays":30,"staticryptSaltUniqueVariableName":"39fbcd7194781426880166695170b222"};
+
+            // you can edit these values to customize some of the behavior of StatiCrypt
+            const templateConfig = {
+                rememberExpirationKey: "staticrypt_expiration",
+                rememberPassphraseKey: "staticrypt_passphrase",
+                replaceHtmlCallback: null,
+                clearLocalStorageCallback: null,
+            };
+
+            // init the staticrypt engine
+            const staticrypt = staticryptInitiator.init(staticryptConfig, templateConfig);
+
+            // try to automatically decrypt on load if there is a saved password
+            window.onload = async function () {
+                const { isSuccessful } = await staticrypt.handleDecryptOnLoad();
+
+                // if we didn't decrypt anything on load, show the password prompt. Otherwise the content has already been
+                // replaced, no need to do anything
+                if (!isSuccessful) {
+                    // hide loading screen
+                    document.getElementById("staticrypt_loading").classList.add("hidden");
+                    document.getElementById("staticrypt_content").classList.remove("hidden");
+                    document.getElementById("staticrypt-password").focus();
+
+                    // show the remember me checkbox
+                    if (isRememberEnabled) {
+                        document.getElementById("staticrypt-remember-label").classList.remove("hidden");
+                    }
+                }
+            };
+
+            // toggle password visibility
+            const toggleIcon = document.querySelector(".staticrypt-toggle-password-visibility");
+            // these two icons are coming from FontAwesome
+            const imgSrcEyeClosed =
+                "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTM4LjggNS4xQzI4LjQtMy4xIDEzLjMtMS4yIDUuMSA5LjJTLTEuMiAzNC43IDkuMiA0Mi45bDU5MiA0NjRjMTAuNCA4LjIgMjUuNSA2LjMgMzMuNy00LjFzNi4zLTI1LjUtNC4xLTMzLjdMNTI1LjYgMzg2LjdjMzkuNi00MC42IDY2LjQtODYuMSA3OS45LTExOC40YzMuMy03LjkgMy4zLTE2LjcgMC0yNC42Yy0xNC45LTM1LjctNDYuMi04Ny43LTkzLTEzMS4xQzQ2NS41IDY4LjggNDAwLjggMzIgMzIwIDMyYy02OC4yIDAtMTI1IDI2LjMtMTY5LjMgNjAuOEwzOC44IDUuMXpNMjIzLjEgMTQ5LjVDMjQ4LjYgMTI2LjIgMjgyLjcgMTEyIDMyMCAxMTJjNzkuNSAwIDE0NCA2NC41IDE0NCAxNDRjMCAyNC45LTYuMyA0OC4zLTE3LjQgNjguN0w0MDggMjk0LjVjOC40LTE5LjMgMTAuNi00MS40IDQuOC02My4zYy0xMS4xLTQxLjUtNDcuOC02OS40LTg4LjYtNzEuMWMtNS44LS4yLTkuMiA2LjEtNy40IDExLjdjMi4xIDYuNCAzLjMgMTMuMiAzLjMgMjAuM2MwIDEwLjItMi40IDE5LjgtNi42IDI4LjNsLTkwLjMtNzAuOHpNMzczIDM4OS45Yy0xNi40IDYuNS0zNC4zIDEwLjEtNTMgMTAuMWMtNzkuNSAwLTE0NC02NC41LTE0NC0xNDRjMC02LjkgLjUtMTMuNiAxLjQtMjAuMkw4My4xIDE2MS41QzYwLjMgMTkxLjIgNDQgMjIwLjggMzQuNSAyNDMuN2MtMy4zIDcuOS0zLjMgMTYuNyAwIDI0LjZjMTQuOSAzNS43IDQ2LjIgODcuNyA5MyAxMzEuMUMxNzQuNSA0NDMuMiAyMzkuMiA0ODAgMzIwIDQ4MGM0Ny44IDAgODkuOS0xMi45IDEyNi4yLTMyLjVMMzczIDM4OS45eiIvPjwvc3ZnPg==";
+            const imgSrcEyeOpened =
+                "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTI4OCAzMmMtODAuOCAwLTE0NS41IDM2LjgtMTkyLjYgODAuNkM0OC42IDE1NiAxNy4zIDIwOCAyLjUgMjQzLjdjLTMuMyA3LjktMy4zIDE2LjcgMCAyNC42QzE3LjMgMzA0IDQ4LjYgMzU2IDk1LjQgMzk5LjRDMTQyLjUgNDQzLjIgMjA3LjIgNDgwIDI4OCA0ODBzMTQ1LjUtMzYuOCAxOTIuNi04MC42YzQ2LjgtNDMuNSA3OC4xLTk1LjQgOTMtMTMxLjFjMy4zLTcuOSAzLjMtMTYuNyAwLTI0LjZjLTE0LjktMzUuNy00Ni4yLTg3LjctOTMtMTMxLjFDNDMzLjUgNjguOCAzNjguOCAzMiAyODggMzJ6TTE0NCAyNTZhMTQ0IDE0NCAwIDEgMSAyODggMCAxNDQgMTQ0IDAgMSAxIC0yODggMHptMTQ0LTY0YzAgMzUuMy0yOC43IDY0LTY0IDY0Yy03LjEgMC0xMy45LTEuMi0yMC4zLTMuM2MtNS41LTEuOC0xMS45IDEuNi0xMS43IDcuNGMuMyA2LjkgMS4zIDEzLjggMy4yIDIwLjdjMTMuNyA1MS4yIDY2LjQgODEuNiAxMTcuNiA2Ny45czgxLjYtNjYuNCA2Ny45LTExNy42Yy0xMS4xLTQxLjUtNDcuOC02OS40LTg4LjYtNzEuMWMtNS44LS4yLTkuMiA2LjEtNy40IDExLjdjMi4xIDYuNCAzLjMgMTMuMiAzLjMgMjAuM3oiLz48L3N2Zz4=";
+            toggleIcon.addEventListener("click", function () {
+                const passwordInput = document.getElementById("staticrypt-password");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    toggleIcon.src = imgSrcEyeOpened;
+                    toggleIcon.alt = templateToggleAltHide;
+                    toggleIcon.title = templateToggleAltHide;
+                } else {
+                    passwordInput.type = "password";
+                    toggleIcon.src = imgSrcEyeClosed;
+                    toggleIcon.alt = templateToggleAltShow;
+                    toggleIcon.title = templateToggleAltShow;
+                }
+            });
+
+            // handle password form submission
+            document.getElementById("staticrypt-form").addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const password = document.getElementById("staticrypt-password").value,
+                    isRememberChecked = document.getElementById("staticrypt-remember").checked;
+
+                const { isSuccessful } = await staticrypt.handleDecryptionOfPage(password, isRememberChecked);
+
+                if (!isSuccessful) {
+                    alert(templateError);
+                }
+            });
+        </script>
+    </body>
+</html>

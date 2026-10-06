@@ -1,0 +1,42 @@
+/* Tipografía oficial de la UPV/EHU, sólo en las páginas de memoria/ (CSS de página, no del sitio).
+   Los .woff2 se sirven desde fonts/ (recurso del sitio); la URL es relativa a _site/memoria/. */
+
+@font-face { font-family: "EHUSerif"; src: url("../fonts/EHU_Serif/EHUSerif-Regular.woff2") format("woff2");    font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "EHUSerif"; src: url("../fonts/EHU_Serif/EHUSerif-Italic.woff2") format("woff2");     font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "EHUSerif"; src: url("../fonts/EHU_Serif/EHUSerif-Bold.woff2") format("woff2");       font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "EHUSerif"; src: url("../fonts/EHU_Serif/EHUSerif-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "EHUSerif"; src: url("../fonts/EHU_Serif/EHUSerif-Light.woff2") format("woff2");      font-weight: 300; font-style: normal; font-display: swap; }
+
+@font-face { font-family: "EHUSans"; src: url("../fonts/EHU_Sans/EHUSans-Regular.woff2") format("woff2");    font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "EHUSans"; src: url("../fonts/EHU_Sans/EHUSans-Italic.woff2") format("woff2");     font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "EHUSans"; src: url("../fonts/EHU_Sans/EHUSans-Bold.woff2") format("woff2");       font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "EHUSans"; src: url("../fonts/EHU_Sans/EHUSans-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "EHUSans"; src: url("../fonts/EHU_Sans/EHUSans-Light.woff2") format("woff2");      font-weight: 300; font-style: normal; font-display: swap; }
+
+/* Cuerpo en EHU Serif; títulos, bloque de título y navegación lateral de la página en EHU Sans. */
+.docs-main,
+.docs-main p,
+.docs-main li,
+.docs-main td,
+.docs-main th,
+.docs-main .callout {
+  font-family: "EHUSerif", Georgia, "Times New Roman", serif;
+}
+
+.docs-main h1,
+.docs-main h2,
+.docs-main h3,
+.docs-main h4,
+#title-block-header .title,
+#title-block-header .subtitle,
+#title-block-header .quarto-title-meta,
+.docs-main .callout-title,
+.docs-main .callout-header,
+.docs-toc {
+  font-family: "EHUSans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.docs-main code,
+.docs-main pre {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
